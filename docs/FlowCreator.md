@@ -196,9 +196,9 @@ In the http node configure a **POST** request with the following URL:
 To send the defined notification via these Flow Creator nodes, just trigger the inject node.
 
 ![result_raise](/docs/graphics/result_raise.png)
-![result_raise2](/docs/graphics/result_raise2.png)
+![result_raise2](/docs/graphics/result_raise_2.png)
 
 > **AssetId:**
 > To get the assetId, either look up in Data Service > select asset > copy id from URL  OR  execute a http request to GET notification and copy the assetId from the response.
 
-![get_assetid_1](/docs/graphics/get_assetid_1.png)![get_assetid_2](/docs/graphics/get_assetid_2.png)
+![get_assetid_1](/docs/graphics/get_assetid_1.png) ![get_assetid_2](/docs/graphics/get_assetid_2.png)
