@@ -45,7 +45,7 @@ In the http node configure a **GET** request with the following URL:
 
 ![api_old_get_all](/docs/graphics/api_old_get_all.png)
 
-The deprecated API call also works. Therefore no parameter is necessary.
+The **deprecated** API call also works. Therefore no parameter is necessary.
 
 ![flow_get_all_old](/docs/graphics/flow_get_all_old.png)
 
@@ -91,7 +91,7 @@ In the http node configure a **GET** request with the following URL:
 
 ![api_old_get_all](/docs/graphics/api_old_get_one.png)
 
-The deprecated API call also works. Therefore only the parameter "notificationSource" is necessary.
+The **deprecated** API call also works. Therefore only the parameter "notificationSource" is necessary.
 
 ![flow_get_one_old](/docs/graphics/flow_get_one_old.png)
 
@@ -172,6 +172,13 @@ It is possible to raise a further notification within the Flow Creator. Therefor
 - **assetId**: id of asset in Data Service (looks like '549c3daa33cd4628b02c2e2745f54d80')
 - **notificationSource**: who sended the notification, e.g. "CustomApp" (can be any string, but do not use blanks within)
 
+> **AssetId:**
+> To get the assetId, either look up in Data Service > select asset > copy id from URL  OR  execute a http request to GET notification and copy the assetId from the response.
+
+![get_assetid_1](/docs/graphics/get_assetid_1.png) ![get_assetid_2](/docs/graphics/get_assetid_2.png)
+
+---------
+
 ![flow_raise](/docs/graphics/flow_raise.png)
 
 The function "set request body" sets the mandatory parameter within the request body for the http POST request.
@@ -197,8 +204,3 @@ To send the defined notification via these Flow Creator nodes, just trigger the 
 
 ![result_raise](/docs/graphics/result_raise.png)
 ![result_raise2](/docs/graphics/result_raise_2.png)
-
-> **AssetId:**
-> To get the assetId, either look up in Data Service > select asset > copy id from URL  OR  execute a http request to GET notification and copy the assetId from the response.
-
-![get_assetid_1](/docs/graphics/get_assetid_1.png) ![get_assetid_2](/docs/graphics/get_assetid_2.png)
