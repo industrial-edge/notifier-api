@@ -10,13 +10,15 @@
 
 ## Launch the Flow Creator
 
-The Flow Creator, the Notifier and the custom app must be installed on the same Edge Device. Open and login to the Flow Creator. The following chapters describe how to execute the Notifier OpenAPI requests step by step. All OpenAPI commands are executed via a http request. A ready-to-use flow, that contains all these steps, can be downloaded [here](src/Flow.json) and importet into the Flow Creator.
+The Flow Creator, the Notifier and the custom app must be installed on the same Edge Device. Open and login to the Flow Creator. The following chapters describe how to execute the Notifier OpenAPI requests step by step. All OpenAPI commands are executed via a http request.
+
+A ready-to-use flow, that contains all these steps, can be downloaded [here](/src/Flow.json) and importet into the Flow Creator.
 
 ## List all notifications
 
 In case of passing the defined limits of the KPI value, the custom app sends notifications to the Notifier. These notifications can also be listet in the Flow Creator. Therefore the parameter "notificationSource" is necessary.
 
-![api_get_all](docs/graphics/api_get_all.png)
+![api_get_all](/docs/graphics/api_get_all.png)
 
 The following nodes are needed:
 
@@ -37,13 +39,13 @@ In the http node configure a **GET** request with the following URL:
 
 `http://notifier:4201/notificationservice/notifications/ext/active?notificationSource={{{notificationSource}}}`
 
-![flow_get_all](docs/graphics/flow_get_all.png)
+![flow_get_all](/docs/graphics/flow_get_all.png)
 
 ---------
 
 The deprecated API call also works. Therefore no parameter is necessary.
 
-![api_old_get_all](docs/graphics/api_old_get_all.png)
+![api_old_get_all](/docs/graphics/api_old_get_all.png)
 
 The following nodes are needed:
 
@@ -55,7 +57,7 @@ In the http node configure a **GET** request with the following URL:
 
 `http://notifier:4201/notificationservice/notifications`
 
-![flow_get_all_old](docs/graphics/flow_get_all_old.png)
+![flow_get_all_old](/docs/graphics/flow_get_all_old.png)
 
 ---------
 
@@ -67,7 +69,7 @@ To get all currently active notifications via these Flow Creator nodes, just tri
 
 It is also possible to list just one specific notification which is active. Therefore the parameter "notificationId" and "notificationSource" are necessary.
 
-![api_get_one](docs/graphics/api_get_one.png)
+![api_get_one](/docs/graphics/api_get_one.png)
 
 The following nodes are needed:
 
@@ -90,13 +92,13 @@ In the http node configure a **GET** request with the following URL:
 
 `http://notifier:4201/notificationservice/notifications/ext/active/{{{notificationId}}}?notificationSource={{{notificationSource}}}`
 
-![flow_get_one](docs/graphics/flow_get_one.png)
+![flow_get_one](/docs/graphics/flow_get_one.png)
 
 ---------
 
 The deprecated API call also works. Therefore only the parameter "notificationSource" is necessary.
 
-![api_old_get_all](docs/graphics/api_old_get_one.png)
+![api_old_get_all](/docs/graphics/api_old_get_one.png)
 
 The following nodes are needed:
 
@@ -109,7 +111,7 @@ In the http node configure a **GET** request with the following URL:
 
 `http://notifier:4201/notificationservice/notifications/{{{notificationId}}}`
 
-![flow_get_one_old](docs/graphics/flow_get_one_old.png)
+![flow_get_one_old](/docs/graphics/flow_get_one_old.png)
 
 ---------
 
@@ -121,7 +123,7 @@ To get the defined notification via these Flow Creator nodes, just trigger the i
 
 It is possible to accept an active notification. Therefore the parameter "notificationId", "userId" and "notificationSource" are necessary.
 
-![api_accept](docs/graphics/api_accept.png)
+![api_accept](/docs/graphics/api_accept.png)
 
 The following nodes are needed:
 
@@ -137,7 +139,7 @@ msg.notificationId = {}
 msg.userId = {}
 msg.notificationSource = {}
 msg.notificationId = "14";
-msg.userId = "test@siemens.com"
+msg.userId = "user@siemens.com"
 msg.notificationSource = "CustomApp";
 return msg;
 ```
@@ -146,7 +148,7 @@ In the http node configure a **PUT** request with the following URL:
 
 `http://notifier:4201/notificationservice/notifications/{{{notificationId}}}/ext/accept?userId={{{userId}}}&notificationSource={{{notificationSource}}}`
 
-![flow_accept](docs/graphics/flow_accept.png)
+![flow_accept](/docs/graphics/flow_accept.png)
 
 ---------
 
@@ -158,7 +160,7 @@ To clear the defined notification via these Flow Creator nodes, just trigger the
 
 It is possible to clear an active notification. Therefore the parameter "notificationId" is necessary.
 
-![api_clear](docs/graphics/api_clear.png)
+![api_clear](/docs/graphics/api_clear.png)
 
 The following nodes are needed:
 
@@ -179,19 +181,30 @@ In the http node configure a **PUT** request with the following URL:
 
 `http://notifier:4201/notificationservice/notifications/{{{notificationId}}}/ext/clear`
 
-![flow_clear](docs/graphics/flow_clear.png)
+![flow_clear](/docs/graphics/flow_clear.png)
 
 ---------
 
 To get the defined notification via these Flow Creator nodes, just trigger the inject node.
 
-![result_clear](docs/graphics/result_clear.png)
+![result_clear](/docs/graphics/result_clear.png)
 
 ## Raise one notification
 
 It is possible to raise a further notification within the Flow Creator. Therefore a request body is necessary, containing "notificationTypeId", "eventText", "assetId" and "notificationSource". The new notification gets an unique notificationId for identification.
 
-![api_clear](docs/graphics/api_raise.png)
+- **notificationTypeId**: 1 (alert) / 2 (warning) / 3 (information)
+- **eventText**: message text (can be any string)
+- **assetId**: id of asset in Data Service (looks like '549c3daa33cd4628b02c2e2745f54d80')
+- **notificationSource**: who sended the notification, e.g. "CustomApp" (can be any string, but do not use blanks within)
+
+![api_clear](/docs/graphics/api_raise.png)
+
+> **AssetId:**
+> To get the assetId, either look up in Data Service > select asset > copy id from URL  OR  execute a http request to GET notification and copy the assetId from the response.
+
+![get_assetid_1](/docs/graphics/get_assetid_1.png)
+![get_assetid_2](/docs/graphics/get_assetid_2.png)
 
 The following nodes are needed:
 
@@ -201,16 +214,6 @@ The following nodes are needed:
 - debug
 
 The function "set request body" sets the mandatory parameter within the request body for the http POST request.
-
-- notificationTypeId: 1 (alert) / 2 (warning) / 3 (information)
-- eventText: message text (can be any string)
-- assetId: id of asset in Data Service (looks like '549c3daa33cd4628b02c2e2745f54d80')
-- notificationSource: from whom the notification, e.g. "CustomApp" (can be any string, but do not use blanks within)
-
-> **assetId:**
-> - look up in Data Service > select asset > copy id from URL
-> or
-> - execute http request to GET notification and copy assetId from response
 
 ```javascript
 msg.payload = {}
@@ -227,11 +230,11 @@ In the http node configure a **POST** request with the following URL:
 
 `http://notifier:4201/notificationservice/notifications/ext/raise`
 
-![flow_raise](docs/graphics/flow_raise.png)
+![flow_raise](/docs/graphics/flow_raise.png)
 
 ---------
 
 To send the defined notification via these Flow Creator nodes, just trigger the inject node.
 
-![result_raise](docs/graphics/result_raise.png)
-![result_raise2](docs/graphics/result_raise2.png)
+![result_raise](/docs/graphics/result_raise.png)
+![result_raise2](/docs/graphics/result_raise2.png)
