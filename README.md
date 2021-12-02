@@ -30,9 +30,7 @@ V1.0 (deprecated)
 
 ![api-calls-old](docs/graphics/api_calls_old.png)
 
-The current Notifier OpenAPI specification can be found here:
-
-![OpenAPI](docs/OpenAPI/notifier-api-specification.html)
+The current Notifier OpenAPI specification can be downloaded [here](docs/Notifier%20OpenAPI.zip).
 
 Using these HTTP requests, notifications can be for example triggered from another app and displayed in the Notifier.
 
