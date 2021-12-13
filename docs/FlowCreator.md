@@ -45,7 +45,7 @@ In the http node configure a **GET** request with the following URL:
 
 ![api_old_get_all](/docs/graphics/api_old_get_all.png)
 
-The **deprecated** API call also works. Therefore no parameter is necessary.
+The **deprecated** API call (V1.0) also works. Therefore no parameter is necessary.
 
 ![flow_get_all_old](/docs/graphics/flow_get_all_old.png)
 
@@ -163,7 +163,7 @@ To get the defined notification via these Flow Creator nodes, just trigger the i
 
 ## Raise one notification
 
-![api_clear](/docs/graphics/api_raise.png)
+![api_raise](/docs/graphics/api_raise.png)
 
 It is possible to raise a further notification within the Flow Creator. Therefore a request body is necessary, containing "notificationTypeId", "eventText", "assetId" and "notificationSource". The new notification gets an unique notificationId for identification.
 
