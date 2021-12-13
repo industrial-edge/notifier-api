@@ -12,6 +12,7 @@ This guide shows how to implement the Notifier OpenAPI to connect a user-develop
     - [TIA Project](#tia-project)
   - [Using Notifier OpenAPI within a custom app](#using-notifier-openapi-within-a-custom-app)
   - [Using Notifier OpenAPI within the Flow Creator](#using-notifier-openapi-within-the-flow-creator)
+  - [Using Notifier OpenAPI with Postman](#using-notifier-openapi-with-postman)
   - [Documentation](#documentation)
   - [Contribution](#contribution)
   - [Licence and Legal Information](#licence-and-legal-information)
@@ -80,24 +81,36 @@ The used TIA Portal project can be found in the [miscellaneous repository](https
 
 ## Using Notifier OpenAPI within a custom app
 
-You can find further information about the following steps [here](docs/App.md)
+You can find further information about the following steps [here](docs/App.md).
 
 - [xxx](docs/App.md#)
 - [xxx](docs/App.md#)
 
 ## Using Notifier OpenAPI within the Flow Creator
 
-You can find further information about the following steps [here](docs/FlowCreator.md)
+You can find further information about the following steps [here](docs/FlowCreator.md).
 
 - [Launch the Flow Creator](docs/FlowCreator.md#launch-the-flow-creator)
 - [List all notifications](docs/FlowCreator.md#list-all-notifications)
 - [List one notification](docs/FlowCreator.md#list-one-notification)
 - [Accept one notification](docs/FlowCreator.md#accept-one-notification)
 - [Clear one notification](docs/FlowCreator.md#clear-one-notification)
+- [Raise one notification](docs/FlowCreator.md#raise-one-notification)
+
+## Using Notifier OpenAPI with Postman
+
+The Notifier OpenAPI requests can also be tested and used via the API platform Postman.
+You can find further information about the following steps [here](docs/Postman.md).
+
+- [List all notifications](docs/Postman.md#list-all-notifications)
+- [List one notification](docs/Postman.md#list-one-notification)
+- [Accept one notification](docs/Postman.md#accept-one-notification)
+- [Clear one notification](docs/Postman.md#clear-one-notification)
+- [Raise one notification](docs/Postman.md#raise-one-notification)
 
 ## Documentation
 
-You can find further documentation and help in the following links
+You can find further documentation and help in the following links.
 
 - [Industrial Edge Hub](https://iehub.eu1.edge.siemens.cloud/#/documentation)
 - [Industrial Edge Forum](https://www.siemens.com/industrial-edge-forum)
