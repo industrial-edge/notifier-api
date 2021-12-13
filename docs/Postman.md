@@ -45,7 +45,7 @@ With this API call you can clear an active notification.  Therefore the paramete
 
 ## Raise one notification
 
-![flow_raise](/docs/graphics/flow_raise.png)
+![api_raise](/docs/graphics/api_raise.png)
 
 With this API call you can raise a further notification. Therefore a request body is necessary, containing "notificationTypeId", "eventText", "assetId" and "notificationSource". The new notification gets an unique notificationId for identification.
 
