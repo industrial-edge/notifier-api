@@ -33,7 +33,7 @@ The function "set params" sets the mandatory parameter, which is later used in t
 
 ```javascript
 msg.notificationSource = {}
-msg.notificationSource = "CustomApp";
+msg.notificationSource = "KPI calculation app";
 return msg;
 ```
 
@@ -79,7 +79,7 @@ The function "set params" sets the mandatory parameter, which are later used in 
 msg.notificationId = {}
 msg.notificationSource = {}
 msg.notificationId = "8";
-msg.notificationSource = "CustomApp";
+msg.notificationSource = "KPI calculation app";
 return msg;
 ```
 
@@ -121,7 +121,7 @@ msg.userId = {}
 msg.notificationSource = {}
 msg.notificationId = "14";
 msg.userId = "user@siemens.com"
-msg.notificationSource = "CustomApp";
+msg.notificationSource = "KPI calculation app";
 return msg;
 ```
 
@@ -170,7 +170,7 @@ It is possible to raise a further notification within the Flow Creator. Therefor
 - **notificationTypeId**: 1 (alert) / 2 (warning) / 3 (information)
 - **eventText**: message text (can be any string)
 - **assetId**: id of asset in Data Service (looks like '549c3daa33cd4628b02c2e2745f54d80')
-- **notificationSource**: who sended the notification, e.g. "CustomApp" (can be any string, but do not use blanks within)
+- **notificationSource**: who sended the notification, e.g. "KPI calculation app" (can be any string, but do not use blanks within)
 
 > **AssetId:**
 > To get the assetId, either look up in Data Service > select asset > copy id from URL  OR  execute a http request to GET notification and copy the assetId from the response.
