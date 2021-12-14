@@ -13,25 +13,31 @@ Postman is an API platform for using and testing APIs in a simple way. To execut
 
 ## List all notifications
 
-![api_get_all](/docs/graphics/api_get_all.png)
-
 With this API call you get a list of active notifications. Therefore the parameter "notificationSource" is necessary.
+
+The GET request could look like this:
+
+`https://192.168.112.180/notifier/notificationservice/notifications/ext/active?notificationSource=KPI calculation app`
 
 ![postman_get_all](/docs/graphics/postman_get_all.png)
 
 ## List one notification
 
-![api_get_one](/docs/graphics/api_get_one.png)
-
 With this API call you get one specific notification which is active. Therefore the parameter "notificationId" and "notificationSource" are necessary.
+
+The GET request could look like this:
+
+`https://192.168.112.180/notifier/notificationservice/notifications/ext/active/:id?notificationSource=KPI calculation app`
 
 ![postman_get_one](/docs/graphics/postman_get_one.png)
 
 ## Accept one notification
 
-![api_accept](/docs/graphics/api_accept.png)
-
 With this API call you can accept an active notification. Therefore the parameter "notificationId", "userId" and "notificationSource" are necessary.
+
+The GET request could look like this:
+
+`https://192.168.112.180/notifier/notificationservice/notifications/:id/ext/accept?userId=user@siemens.com&notificationSource=KPI calculation app`
 
 ![postman_accept](/docs/graphics/postman_accept.png)
 
@@ -41,15 +47,15 @@ It is important to set the parameter according to the currently active notificat
 
 ## Clear one notification
 
-![api_clear](/docs/graphics/api_clear.png)
-
 With this API call you can clear an active notification.  Therefore the parameter "notificationId" is necessary.
+
+The GET request could look like this:
+
+`https://192.168.112.180/notifier/notificationservice/notifications/:id/ext/clear`
 
 ![postman_clear](/docs/graphics/postman_clear.png)
 
 ## Raise one notification
-
-![api_raise](/docs/graphics/api_raise.png)
 
 With this API call you can raise a further notification. Therefore a request body is necessary, containing "notificationTypeId", "eventText", "assetId" and "notificationSource". The new notification gets an unique notificationId for identification.
 
@@ -63,6 +69,10 @@ With this API call you can raise a further notification. Therefore a request bod
 
 ![get_assetid_1](/docs/graphics/get_assetid_1.png) ![get_assetid_2](/docs/graphics/get_assetid_2.png)
 
-The body within the Postman request can be defined as JSON format:
+The GET request could look like this:
+
+`https://192.168.112.180/notifier/notificationservice/notifications/ext/raise`
+
+The body within the Postman request can be defined as *JSON* format:
 
 ![postman_raise](/docs/graphics/postman_raise.png)
