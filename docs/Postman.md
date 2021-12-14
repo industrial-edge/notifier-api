@@ -11,6 +11,8 @@ Postman is an API platform for using and testing APIs in a simple way. To execut
 
 ![postman_header](/docs/graphics/postman_header.png)
 
+A postman collection, that contains all the following requests, can be downloaded [here](/docs/postman_collection.json) and imported into Postman.
+
 ## List all notifications
 
 With this API call you get a list of active notifications. Therefore the parameter "notificationSource" is necessary.
@@ -73,6 +75,6 @@ The GET request could look like this:
 
 `https://192.168.112.180/notifier/notificationservice/notifications/ext/raise`
 
-The body within the Postman request can be defined as *JSON* format:
+The body within the Postman request can be defined as **JSON** format:
 
 ![postman_raise](/docs/graphics/postman_raise.png)
