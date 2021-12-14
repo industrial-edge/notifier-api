@@ -63,7 +63,7 @@ In the http node configure a **GET** request with the following URL:
 
 To get all currently active notifications via these Flow Creator nodes, just trigger the inject node.
 
-=========> Screenhot missing !!!
+![flow_get_all_result](/docs/graphics/flow_get_all_result.png)
 
 ## List one notification
 
@@ -78,7 +78,7 @@ The function "set params" sets the mandatory parameter, which are later used in 
 ```javascript
 msg.notificationId = {}
 msg.notificationSource = {}
-msg.notificationId = "8";
+msg.notificationId = "36";
 msg.notificationSource = "KPI calculation app";
 return msg;
 ```
@@ -103,7 +103,7 @@ In the http node configure a **GET** request with the following URL:
 
 To get the defined notification via these Flow Creator nodes, just trigger the inject node.
 
-=========> Screenhot missing !!!
+![flow_get_one_result](/docs/graphics/flow_get_one_result.png)
 
 ## Accept one notification
 
@@ -119,8 +119,8 @@ The function "set params" sets the mandatory parameter, which are later used in 
 msg.notificationId = {}
 msg.userId = {}
 msg.notificationSource = {}
-msg.notificationId = "14";
-msg.userId = "user@siemens.com"
+msg.notificationId = "39";
+msg.userId = "test@siemens.com"
 msg.notificationSource = "KPI calculation app";
 return msg;
 ```
@@ -133,7 +133,7 @@ In the http node configure a **PUT** request with the following URL:
 
 To clear the defined notification via these Flow Creator nodes, just trigger the inject node.
 
-=========> Screenhot missing !!!
+![flow_accept_result](/docs/graphics/flow_accept_result.png)
 
 ## Clear one notification
 
@@ -159,7 +159,7 @@ In the http node configure a **PUT** request with the following URL:
 
 To get the defined notification via these Flow Creator nodes, just trigger the inject node.
 
-![result_clear](/docs/graphics/result_clear.png)
+![flow_clear_result](/docs/graphics/flow_clear_result.png)
 
 ## Raise one notification
 
@@ -202,5 +202,5 @@ In the http node configure a **POST** request with the following URL:
 
 To send the defined notification via these Flow Creator nodes, just trigger the inject node.
 
-![result_raise](/docs/graphics/result_raise.png)
-![result_raise2](/docs/graphics/result_raise_2.png)
+![flow_raise_result](/docs/graphics/flow_raise_result.png)
+![flow_raise_result_2](/docs/graphics/flow_raise_result_2.png)
