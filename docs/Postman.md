@@ -35,6 +35,10 @@ With this API call you can accept an active notification. Therefore the paramete
 
 ![postman_accept](/docs/graphics/postman_accept.png)
 
+It is important to set the parameter according to the currently active notifications. For example if "notificationSource" is set to 'Postman', but this special notification has 'KPI calculation app' as source, the request will fail with state 400 "Bad Request".
+
+![postman_accept_failed](/docs/graphics/postman_accept_failed.png)
+
 ## Clear one notification
 
 ![api_clear](/docs/graphics/api_clear.png)
@@ -48,5 +52,17 @@ With this API call you can clear an active notification.  Therefore the paramete
 ![api_raise](/docs/graphics/api_raise.png)
 
 With this API call you can raise a further notification. Therefore a request body is necessary, containing "notificationTypeId", "eventText", "assetId" and "notificationSource". The new notification gets an unique notificationId for identification.
+
+- **notificationTypeId**: 1 (alert) / 2 (warning) / 3 (information)
+- **eventText**: message text (can be any string)
+- **assetId**: id of asset in Data Service (looks like '549c3daa33cd4628b02c2e2745f54d80')
+- **notificationSource**: who sended the notification, e.g. "KPI calculation app" (can be any string, but do not use blanks within)
+
+> **AssetId:**
+> To get the assetId, either look up in Data Service > select asset > copy id from URL  OR  execute a http request to GET notification and copy the assetId from the response.
+
+![get_assetid_1](/docs/graphics/get_assetid_1.png) ![get_assetid_2](/docs/graphics/get_assetid_2.png)
+
+The body within the Postman request can be defined as JSON format:
 
 ![postman_raise](/docs/graphics/postman_raise.png)
