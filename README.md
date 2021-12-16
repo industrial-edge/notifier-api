@@ -1,6 +1,6 @@
 # Notifier OpenAPI implementation
 
-This guide shows how to implement the Notifier OpenAPI to connect a user-developed app to the Notifier and access the interfaces of the Notifier.
+This guide shows how to use the Notifier OpenAPI in different ways. Here the OpenAPI is implemented within an user-developed app to send notifications to the Notifier. Furthermore it is shown how to use the OpenAPI within the Flow Creator and with Postman.
 
 - [Notifier OpenAPI implementation](#notifier-openapi-implementation)
   - [Description](#description)
@@ -39,11 +39,13 @@ Using these HTTP requests, notifications can be for example triggered from anoth
 
 This how to shows two ways of using the Notifier OpenAPI.
 
-First it is described how to implement a JavaScript app in Docker including the Notifier OpenAPI. The app calculates and monitors a KPI value. Therefore the user can define two input topics for the KPI calculation, as well as a min and max limit of the KPI value. In case these limits are passed, the app sends a notification to the Notifier app on the IED.
+First it is described how to implement a JavaScript app in Docker including the Notifier OpenAPI. The app calculates and monitors a KPI value. Therefore the user can define two input tags that are coming from S7 Connector, as well as a min and max limit of the KPI value. In case these limits are passed, the app sends a notification to the Notifier app on the IED.
 
 ![overview](docs/graphics/overview.png)
 
 Furthermore it is shown how to handle the Notifier OpenAPI requests within the Flow Creator. Here the user can for example list the sended notifications from the custom app, accept and clear them.
+
+Additionally it is shown how to handle the Notifier OpenAPI requests with Postman, a free API platform.
 
 ## Requirements
 
@@ -81,10 +83,14 @@ The used TIA Portal project can be found in the [miscellaneous repository](https
 
 ## Using Notifier OpenAPI within a custom app
 
-You can find further information about the following steps [here](docs/App.md).
+You can find further information about the following steps [here](docs/Installation.md).
 
-- [xxx](docs/App.md#)
-- [xxx](docs/App.md#)
+- [Build application](docs/Installation.md#build-application)
+- [Upload  App to the Industrial Edge Managment](docs/Installation.md#upload--app-to-the-industrial-edge-managment)
+- [Deploying of App](docs/Installation.md#deploying-of-app)
+- [Configure PLC project](docs/Installation.md#configure-plc-project)
+- [Configure PLC Connection](docs/Installation.md#configure-plc-connection)
+- [Test the application](docs/Installation.md#test-the-application)
 
 ## Using Notifier OpenAPI within the Flow Creator
 
