@@ -16,7 +16,7 @@ The app is implemented with JavaScript in Docker, using the XMLHttpRequest API t
 
 To use the app, the user must define a user and password for the Databus, the Data Service asset that is used, two input tags that are coming from S7 Connector, as well as a min and max limit of the KPI value.
 
-![overview_app](docs/graphics/overview_app.png)
+![overview_app](/docs/graphics/overview_app.png)
 
 ## Build application
 
@@ -34,15 +34,15 @@ Please find below a short description how to publish your application in your IE
 - Connect your Industrial Edge App Publisher to your Industrial Edge Managment System
 - Create a new application
 - Add a new version for the application
-- Import the [docker-compose](docker-compose.yml) file using the **Import YAML** button
+- Import the [docker-compose](/docker-compose.yml) file using the **Import YAML** button
 - Review, validate and create the version
 - The warning `Build (sevices >> scanner-service) is not supported` can be ignored
 
-![publisher_create](docs/graphics/publisher_create.png)
+![publisher_create](/docs/graphics/publisher_create.png)
 
 - **Start Upload** to transfer the app to Industrial Edge Managment
 
-![iem_app](docs/graphics/iem_app.png)
+![iem_app](/docs/graphics/iem_app.png)
 
 For more detailed information please see the section for [uploading apps to the IEM](https://github.com/industrial-edge/upload-app-to-iem).
 
@@ -64,7 +64,7 @@ The configuration file has to be named *mqtt-config.json*.
 
 This repository provides two config files:
 
-- fix configuration via config file (find file [here](cfg-data/mqtt-config.json))
+- fix configuration via config file (find file [here](/cfg-data/mqtt-config.json))
 
 ```json
 {
@@ -78,9 +78,9 @@ This repository provides two config files:
 }
 ```
 
-- flexible configuration with UI via Configuration Service app (find file [here](cfg-data/json_schema/mqtt-config.json))
+- flexible configuration with UI via Configuration Service app (find file [here](/cfg-data/json_schema/mqtt-config.json))
 
-![config_ui](docs/graphics/config_ui.png)
+![config_ui](/docs/graphics/config_ui.png)
 
 ### Installing application
 
@@ -96,11 +96,11 @@ The KPI calculation and notification app should be already uploaded to you Edge 
 
 To read data from the PLC and provide the data, use the S7 Connector to establish a connection to the PLC (e.g. via OPC UA or S7). Create two tags for faulty and produced value.
 
-![s7_connector](docs/graphics/s7_connector.png)
+![s7_connector](/docs/graphics/s7_connector.png)
 
 The S7 Connector sends the data to the Databus, from where the app collects the data for the KPI calculation. Therefore you need to create a suitable Databus topic.
 
-![databus](docs/graphics/databus.png)
+![databus](/docs/graphics/databus.png)
 
 ## Test the application
 
@@ -110,6 +110,6 @@ The S7 Connector sends the data to the Databus, from where the app collects the 
 - As soon as one of the defined limits (min/max) is passed, the app sends a notification to the Notifier
 - You can watch the incoming notifications on the Notifier UI
 
-![notification_min](docs/graphics/notification_min.png)
+![notification_min](/docs/graphics/notification_min.png)
 
-![notification_max](docs/graphics/notification_max.png)
+![notification_max](/docs/graphics/notification_max.png)
