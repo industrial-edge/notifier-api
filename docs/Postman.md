@@ -7,7 +7,7 @@
   - [Clear one notification](#clear-one-notification)
   - [Raise one notification](#raise-one-notification)
 
-Postman is an API platform for using and testing APIs in a simple way. To execute the Notifier OpenAPI via Postman, it is necessary to create a header key 'Cookie' and set your current cookie string. Otherwisse the request will fail with state 401 "Unauthorized".
+Postman is an API platform for using and testing APIs in a simple way. To execute the Notifier OpenAPI via Postman, it is necessary to create a header key **'Cookie'** and set your current cookie string. Otherwisse the request will fail with state **401 "Unauthorized"**.
 
 ![postman_header](/docs/graphics/postman_header.png)
 
