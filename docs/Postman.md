@@ -11,7 +11,7 @@ Postman is an API platform for using and testing APIs in a simple way. To execut
 
 ![postman_header](/docs/graphics/postman_header.png)
 
-A postman collection, that contains all the following requests, can be downloaded [here](/docs/postman_collection.json) and imported into Postman.
+A **postman collection**, that contains all the following requests, can be downloaded [here](/src/postman_collection.json) and imported into Postman.
 
 ## List all notifications
 
