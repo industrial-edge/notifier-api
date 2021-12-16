@@ -12,7 +12,7 @@
 
 This app calculates and monitors a KPI value, which input data is coming from the S7 Connector into the Databus. The app connects to the Databus via MQTT and and subscribes to the S7 Connector topic. The defined tags containing the KPI data are queried and the KPI value is calculated frequently. In case the defined min and max limits are passed, a notification message is send to the Notifier app on the IED.
 
-The app is implemented with JavaScript in Docker, using the XMLHttpRequest API to transfer data via HTTP.
+The app is implemented with **JavaScript** in Docker, using the **XMLHttpRequest** API to transfer data via HTTP.
 
 To use the app, the user must define a user and password for the Databus, the Data Service asset that is used, two input tags that are coming from S7 Connector, as well as a min and max limit of the KPI value.
 
