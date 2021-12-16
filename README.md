@@ -64,7 +64,7 @@ Additionally it is shown how to handle the Notifier OpenAPI requests with Postma
 - Docker Engine V20.10.10
 - Docker Compose V1.28.5
 - TIA Portal V16
-- PLC: CPU 1511 FW 2.8.3
+- PlcSim Advanced for CPU 1518 ODK
 
 ### Further requirements
 
