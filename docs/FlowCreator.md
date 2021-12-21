@@ -16,9 +16,7 @@ A ready-to-use flow, that contains all these steps, can be downloaded [here](/sr
 
 ## List all notifications
 
-![api_get_all](/docs/graphics/api_get_all.png)
-
-In case of passing the defined limits of the KPI value, the custom app sends notifications to the Notifier. These notifications can also be listet in the Flow Creator. Therefore the parameter "notificationSource" is necessary.
+In case of passing the defined limits of the KPI value, the custom app sends notifications to the Notifier. These notifications can also be listet in the Flow Creator by using the corresponding API request.
 
 ![flow_get_all](/docs/graphics/flow_get_all.png)
 
@@ -29,7 +27,7 @@ The following nodes are needed:
 - http request
 - debug
 
-The function "set params" sets the mandatory parameter, which is later used in the URL of the http request:
+If you check the API documantation for this GET request, the parameter "notificationSource" is required. The function "set params" sets the mandatory parameter, which is later used in the URL of the http request:
 
 ```javascript
 msg.notificationSource = {}
@@ -37,7 +35,11 @@ msg.notificationSource = "KPI calculation app";
 return msg;
 ```
 
-In the http node configure a **GET** request with the following URL:
+The http request node implements the corresponding Notifier API call:
+
+![api_get_all](/docs/graphics/api_get_all.png)
+
+Therefore you need to configure a **GET** request with the following URL:
 
 `http://notifier:4201/notificationservice/notifications/ext/active?notificationSource={{{notificationSource}}}`
 
