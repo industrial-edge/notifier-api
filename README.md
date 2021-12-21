@@ -43,9 +43,7 @@ First it is described how to implement a JavaScript app in Docker including the 
 
 ![overview](docs/graphics/overview.png)
 
-Furthermore it is shown how to handle the Notifier OpenAPI requests within the Flow Creator. Here the user can for example list the sended notifications from the custom app, accept and clear them.
-
-Additionally it is shown how to handle the Notifier OpenAPI requests with Postman, a free API platform.
+Furthermore, by using the Flow Creator and Postman, it is possible to handle and test API calls to the Notifier app. With both tools we will list, accept, clear and raise notification in the Notifier app via its API. For that reason the JS app needs to be on the same Edge Device and running.
 
 ## Requirements
 
@@ -77,7 +75,7 @@ Additionally it is shown how to handle the Notifier OpenAPI requests with Postma
 
 ### TIA Project
 
-The used TIA Portal project can be found in the [miscellaneous repository](https://github.com/industrial-edge/miscellaneous) in the tank application folder and is also used for several further application examples:
+The used TIA Portal project can be found here:
 
 - [Tia Tank Application](https://github.com/industrial-edge/miscellaneous/tree/main/tank%20application)
 
