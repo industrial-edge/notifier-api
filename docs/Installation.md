@@ -50,7 +50,7 @@ For more detailed information please see the section for [uploading apps to the 
 
 ### Configuring application
 
-For this KPI calculation and notification app, several parameter need to be configured in advance:
+For this KPI calculation and notification app, several parameters need to be configured in advance:
 
 - "MQTT_USER": username of the databus user
 - "MQTT_PASSWORD": password of the databus user
