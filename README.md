@@ -1,98 +1,126 @@
-# Writing good how-to or tutorial
+# Notifier OpenAPI implementation
 
-Before you start writing, read the following materials how to write good documentation (including how-tos).
+This guide shows how to use the Notifier OpenAPI in different ways. Here the OpenAPI is implemented within an user-developed app to send notifications to the Notifier. Furthermore it is shown how to use the OpenAPI within the Flow Creator and with Postman.
 
-* [Google Developer style guide](https://developers.google.com/style)
-* [Technical writing Courses](https://developers.google.com/tech-writing)
-* [Microsoft Writing Style Guide](https://docs.microsoft.com/cs-cz/style-guide/welcome/)
-
-Then decide: Are you writing a tutorial or a how-to guide?
-
-[Divio](https://documentation.divio.com/) explains the difference  (Note that this applies for software documentation for application developers)
-
-* Tutorials are lessons that take the reader by the hand through a series of steps to complete a project of some kind. They are what your project needs in order to show a beginner that they can achieve something with it. https://documentation.divio.com/tutorials/
-* How-to guides take the reader through the steps required to solve a real-world problem
-
-Each have a different writing style. Tutorials must be bullet proof (no unexpected behavior) https://documentation.divio.com/how-to-guides/
-
-Note: Try to write the tutorials and how-tos as a standalone html page, ready to be generated using Static site generator [MkDocs](https://www.mkdocs.org/). When referencing code examples or files, use the full URL of the git repository. We want to reuse these how-tos and tutorials in Documentation website.
-
-Don't explain concepts. [It gets in a way of action](https://documentation.divio.com/how-to-guides/#don-t-explain-concepts).  
-
-Don't use HTML tags unless working with videos. And try to avoid using videos unless absolutely necessary. Don't upload videos to Git repository.
-
-Bellow you can find the structure of IE tow-to/tutorial
-
-* [Writing good how-to or tutorial](#writing-good-how-to-or-tutorial)
-  * [Description](#description)
-    * [Overview](#overview)
-    * [General Task](#general-task)
-  * [Requirements](#requirements)
-    * [Prerequisites](#prerequisites)
-    * [Used components](#used-components)
-  * [Installation](#installation)
-  * [Usage](#usage)
-  * [Documentation](#documentation)
-  * [Contribution](#contribution)
-  * [Licence and Legal Information](#licence-and-legal-information)
+- [Notifier OpenAPI implementation](#notifier-openapi-implementation)
+  - [Description](#description)
+    - [Notifier OpenAPI](#notifier-openapi)
+    - [General task](#general-task)
+  - [Requirements](#requirements)
+    - [Used components](#used-components)
+    - [Further requirements](#further-requirements)
+    - [TIA Project](#tia-project)
+  - [Using Notifier OpenAPI within a custom app](#using-notifier-openapi-within-a-custom-app)
+  - [Using Notifier OpenAPI within the Flow Creator](#using-notifier-openapi-within-the-flow-creator)
+  - [Using Notifier OpenAPI with Postman](#using-notifier-openapi-with-postman)
+  - [Documentation](#documentation)
+  - [Contribution](#contribution)
+  - [Licence and Legal Information](#licence-and-legal-information)
 
 ## Description
 
-### Overview
+### Notifier OpenAPI
 
-Why has been this how-to/tutorial created? What is the purpose?
+The Notifier OpenAPI definition contains the following HTTP requests:
 
-### General Task
+V1.1:
 
-What is the general goal/task of this how-to/tutorial?
+![api-calls](docs/graphics/api_calls.png)
 
-![task](docs/graphics/example_graphic.png)
+V1.0 (deprecated)
+
+![api-calls-old](docs/graphics/api_calls_old.png)
+
+The current Notifier OpenAPI specification can be downloaded [here](docs/Notifier%20OpenAPI.zip).
+
+Using these HTTP requests, notifications can be for example triggered from another app and displayed in the Notifier.
+
+### General task
+
+This how to shows two ways of using the Notifier OpenAPI.
+
+First it is described how to implement a JavaScript app in Docker including the Notifier OpenAPI. The app calculates and monitors a KPI value. Therefore the user can define two input tags that are coming from S7 Connector, as well as a min and max limit of the KPI value. In case these limits are passed, the app sends a notification to the Notifier app on the IED.
+
+![overview](docs/graphics/overview.png)
+
+Furthermore, by using the Flow Creator and Postman, it is possible to handle and test API calls to the Notifier app. With both tools we will list, accept, clear and raise notification in the Notifier app via its API. For that reason the JS app needs to be on the same Edge Device and running.
 
 ## Requirements
 
-### Prerequisites
-
-What are the requirements on the user knowledge, HW components before starting the how-to?
-
 ### Used components
 
-List the used software and hardware components that were tested with this how-to.
-Add the used components here (e.g.)
+- Industrial Edge Management (IEM) V1.3.0-58 / V1.4.3
+  - IE App Configuration Service V1.0.7
+  - IE Databus Configurator V1.4.22
+  - IE Databus V1.4.16
+  - S7 Connector Configurator V1.4.9
+  - S7 Connector V1.4.10
+- Industrial Edge Device (IED) V1.3.0-57
+  - Notifier V1.3.0-11296596
+  - IE Flow Creator V1.2.2
+- Industrial Edge App Publisher V1.4.3
+- Docker Engine V20.10.10
+- Docker Compose V1.28.5
+- TIA Portal V16
+- PlcSim Advanced for CPU 1518 ODK
 
-* Industrial Edge App Publisher V1.0.8
-* Docker Engine 18.09.6
-* Docker Compose V2.4
-* S7 Connector V 1.0.22
-* S7 Connector Configurator V 1.0.9
-* Industrial Edge Device V 1.0.0-34
-* TIA Portal V16
-* PLC: CPU 1511 FW 2.8.3
+### Further requirements
 
-## Installation
+- Access to an IEM with onboarded IED
+- Installed system configurators and apps (see list "Used components")
+- Installed apps (see list "Used components")
+- IED is connected to PLC
+- TIA portal project loaded on PLC
+- Google Chrome (Version ≥ 72) or Firefox (Version ≥ 62)
 
-How to install/run this application example? (i.e. how to deploy it to Industrial Edge device?) How to build this application? How to set up configurations in IE?
+### TIA Project
 
-To keep the readme.md file as short as possible please add more detailed information in the docs folder.
+The used TIA Portal project can be found here:
 
-* [Build application](docs/Installation.md#build-application)
+- [Tia Tank Application](https://github.com/industrial-edge/miscellaneous/tree/main/tank%20application)
 
-## Usage
+## Using Notifier OpenAPI within a custom app
 
-When the app is installed, how can I use it? Usually some basic UI description to prove that the app is working correctly.
+You can find further information about the following steps [here](docs/Installation.md).
+
+- [Build application](docs/Installation.md#build-application)
+- [Upload  App to the Industrial Edge Managment](docs/Installation.md#upload--app-to-the-industrial-edge-managment)
+- [Deploying of App](docs/Installation.md#deploying-of-app)
+- [Configure PLC project](docs/Installation.md#configure-plc-project)
+- [Configure PLC Connection](docs/Installation.md#configure-plc-connection)
+- [Test the application](docs/Installation.md#test-the-application)
+
+## Using Notifier OpenAPI within the Flow Creator
+
+You can find further information about the following steps [here](docs/FlowCreator.md).
+
+- [Launch the Flow Creator](docs/FlowCreator.md#launch-the-flow-creator)
+- [List all notifications](docs/FlowCreator.md#list-all-notifications)
+- [List one notification](docs/FlowCreator.md#list-one-notification)
+- [Accept one notification](docs/FlowCreator.md#accept-one-notification)
+- [Clear one notification](docs/FlowCreator.md#clear-one-notification)
+- [Raise one notification](docs/FlowCreator.md#raise-one-notification)
+
+## Using Notifier OpenAPI with Postman
+
+The Notifier OpenAPI requests can also be tested and used via the API platform Postman.
+You can find further information about the following steps [here](docs/Postman.md).
+
+- [List all notifications](docs/Postman.md#list-all-notifications)
+- [List one notification](docs/Postman.md#list-one-notification)
+- [Accept one notification](docs/Postman.md#accept-one-notification)
+- [Clear one notification](docs/Postman.md#clear-one-notification)
+- [Raise one notification](docs/Postman.md#raise-one-notification)
 
 ## Documentation
 
-Add links to documentation. Either on external URL or in the doc folder. Please use always link to a file not to a directory (it doesn't work with static site generator engines).
+You can find further documentation and help in the following links.
 
-Add these links:
-
-You can find further documentation and help in the following links
-
-* [Industrial Edge Hub](https://iehub.eu1.edge.siemens.cloud/#/documentation)
-* [Industrial Edge Forum](https://www.siemens.com/industrial-edge-forum)
-* [Industrial Edge landing page](https://new.siemens.com/global/en/products/automation/topic-areas/industrial-edge/simatic-edge.html)
-* [Industrial Edge GitHub page](https://github.com/industrial-edge)
-
+- [Industrial Edge Hub](https://iehub.eu1.edge.siemens.cloud/#/documentation)
+- [Industrial Edge Forum](https://www.siemens.com/industrial-edge-forum)
+- [Industrial Edge landing page](https://new.siemens.com/global/en/products/automation/topic-areas/industrial-edge/simatic-edge.html)
+- [Industrial Edge GitHub page](https://github.com/industrial-edge)
+  
 ## Contribution
 
 Thank you for your interest in contributing. Anybody is free to report bugs, unclear documentation, and other problems regarding this repository in the Issues section. Everybody is free to propose any changes to this repository using Pull Requests.

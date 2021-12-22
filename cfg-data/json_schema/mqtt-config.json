@@ -1,0 +1,116 @@
+{
+ "uischema":{
+  "type": "Group",
+  "elements": [
+    {
+      "type": "Group",
+      "elements": [
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/MQTT_USER"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/MQTT_PASSWORD"
+            }
+          ]
+        }
+      ],
+      "label": "IE Databus credentials"
+    },
+    {
+      "type": "Group",
+      "elements": [
+        {
+          "type": "Control",
+          "scope": "#/properties/ASSET"
+        }
+      ],
+      "label": "Data Service Asset"
+    },
+    {
+      "type": "Group",
+      "elements": [
+        {
+          "type": "Label",
+          "text": "quality [%] = 100 - ( <faulty> / <produced> * 100 )"
+        },
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/TAG_FAULTY"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/TAG_PRODUCED"
+            }
+          ]
+        }
+      ],
+      "label": "S7 Connector tags to fill this KPI formula (in format: GDB.process.numberFaulty)"
+    },
+    {
+      "type": "Group",
+      "elements": [
+        {
+          "type": "HorizontalLayout",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/LIMIT_MIN"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/LIMIT_MAX"
+            }
+          ]
+        }
+      ],
+      "label": "Limits for the KPI value"
+    }
+  ]
+},
+ "dataschema":{
+	"type": "object",
+	  "properties": {
+		"TAG_FAULTY": {
+		  "title": "Tag faulty",
+		  "default": "GDB.process.numberFaulty",
+		  "type": "string"
+		},
+		"TAG_PRODUCED": {
+		  "title": "Tag produced",
+		  "default": "GDB.process.numberProduced",
+		  "type": "string"
+		},
+		"MQTT_USER": {
+		  "title": "Databus username",
+		  "type": "string"
+		},
+		"MQTT_PASSWORD": {
+		  "title": "Databus password",
+		  "type": "string"
+		},
+		"LIMIT_MIN": {
+		  "title": "Min limit",
+		  "default": 70,
+		  "type": "number"
+		},
+		"LIMIT_MAX": {
+		  "title": "Max limit",
+		  "default": 90,
+		  "type": "number"
+		},
+		"ASSET": {
+		  "title": "Asset id",
+		  "type": "string"
+		}
+	  },
+		"required": ["TAG_FAULTY","TAG_PRODUCED","MQTT_USER","MQTT_PASSWORD","LIMIT_MIN","LIMIT_MAX","ASSET"]
+	}
+}

@@ -1,0 +1,18 @@
+{
+  "name": "kpi_notifier_app",
+  "version": "1.0.0",
+  "description": "App implementing Notifier API in JavaScript to calculate KPI value",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eva Kaul",
+  "license": "ISC",
+  "dependencies": {
+    "mqtt": "^4.2.8",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "repository": {
+	"private": true
+  }
+}

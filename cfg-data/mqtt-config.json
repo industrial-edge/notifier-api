@@ -1,0 +1,9 @@
+{
+    "MQTT_USER":"edge",
+    "MQTT_PASSWORD":"edge",
+    "TAG_FAULTY":"GDB.process.numberFaulty",
+    "TAG_PRODUCED":"GDB.process.numberProduced",
+    "LIMIT_MIN":"70",
+    "LIMIT_MAX":"90",
+    "ASSET":"549c3daa33cd4628b02c2e2745f54d80"
+}
