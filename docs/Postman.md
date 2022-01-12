@@ -7,11 +7,13 @@
   - [Clear one notification](#clear-one-notification)
   - [Raise one notification](#raise-one-notification)
 
-Postman is an API platform for using and testing APIs in a simple way. To execute the Notifier OpenAPI via Postman, it is necessary to create a header key **'Cookie'** and set your current cookie string. Otherwisse the request will fail with state **401 "Unauthorized"**. You can copy the cookie string for your Edge device for example via the development tools in the browser.
+Postman is an API platform for using and testing APIs in a simple way. To execute the Notifier OpenAPI via Postman, it is necessary to have a valid **authentication token**. This can be realized by creating a header key *Cookie* and pass the token (*authToken=<token_string>*). Otherwisse the request will fail with state **401 "Unauthorized"**. You can copy a valid authentication token from your browser cookies, when logged into the Edge device.
 
 ![postman_header](/docs/graphics/postman_header.png)
 
-A **postman collection**, that contains all the following requests, can be downloaded [here](/src/postman_collection.json) and imported into Postman. Please keep in mind to change the cookie string to your current one within all requests.
+A **postman collection**, that contains all the following requests, can be downloaded [here](/src/postman_collection.json) and imported into Postman. Before starting any request, the collection variables must be set properly. You can get the client id from your browser cookies, when logged into the Edge device (the id does not change). A valid authentication token is then provided automatically by the collection.
+
+![postman_variables](/docs/graphics/postman_variables.png)
 
 ## List all notifications
 
