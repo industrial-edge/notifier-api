@@ -7,7 +7,7 @@
   - [Accept one notification](#accept-one-notification)
   - [Clear one notification](#clear-one-notification)
   
-Postman is an API platform for using and testing APIs in a simple way. To execute the Notifier OpenAPI via Postman, it is necessary to have a valid **authentication token**. This can be realized by creating a header key *Cookie* and pass the token (*authToken=<token_string>*). Otherwisse the request will fail with state **401 "Unauthorized"**. You can copy a valid authentication token from your browser cookies, when logged into the Edge device.
+Postman is an API platform for using and testing APIs in a simple way. To test the Notifier OpenAPI via Postman, the Notifier app must run on an Edge device. Within Postman, it is necessary to have a valid **authentication token** to get access to the Edge device. This can be realized by creating a header key *Cookie* and pass the token (*authToken=<token_string>*). Otherwisse the request will fail with state **401 "Unauthorized"**. You can copy a valid authentication token from your browser cookies, when logged into the Edge device.
 
 ![postman_header](/docs/graphics/postman_header1.png)
 
