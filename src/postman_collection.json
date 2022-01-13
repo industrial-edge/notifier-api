@@ -1,10 +1,99 @@
 {
 	"info": {
-		"_postman_id": "fac199f1-602a-49c7-ad03-0b8fb46efef7",
+		"_postman_id": "ed445d7e-004a-48f9-be2a-237848d838f2",
 		"name": "Notifier API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "TEST: login to IED",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"{{VAR_USER}}\",\r\n  \"password\": \"{{VAR_PASSWORD}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{VAR_IP_ADRESS}}/device/edge/api/v1/login/direct",
+					"protocol": "https",
+					"host": [
+						"{{VAR_IP_ADRESS}}"
+					],
+					"path": [
+						"device",
+						"edge",
+						"api",
+						"v1",
+						"login",
+						"direct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "raise notification",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "authToken={{VAR_AUTH_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"notificationTypeId\": \"1\",\r\n  \"eventText\": \"ALERT from Postman\",\r\n  \"assetId\": \"{{VAR_ASSET_ID}}\",\r\n  \"notificationSource\": \"Postman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{VAR_IP_ADRESS}}/notifier/notificationservice/notifications/ext/raise",
+					"protocol": "https",
+					"host": [
+						"{{VAR_IP_ADRESS}}"
+					],
+					"path": [
+						"notifier",
+						"notificationservice",
+						"notifications",
+						"ext",
+						"raise"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "get all notifications",
 			"request": {
@@ -12,18 +101,15 @@
 				"header": [
 					{
 						"key": "Cookie",
-						"value": "selectedLocale=en-us; EdgeCoreID=c7dea460533b4ef7b671135a925d1d69; osPlatformName=FEDORA; domainName=192.168.112.200%3A9443; allowUserManagement=true; edgeMode=managed; boxCodeLogin=true; queryString={\"client_id\":[\"d6b80eb290eb4820b2bab0a19824c532\"],\"connect_uri\":[\"https://192.168.112.180/device/edge/\"],\"redirect_uri\":[\"https://192.168.112.180/device/edge/\"],\"response_type\":[\"code\"]}; signInType=SignUpWithCodeOnly; client_id=d6b80eb290eb4820b2bab0a19824c532; connect_uri=https://192.168.112.180/device/edge/; redirect_uri=https://192.168.112.180/device/edge/; response_type=code; sessionID=Tue, 07 Dec 2021 07:38:49 GMT; authToken=f603b693-7e41-4efe-9c7c-8ae3635ddbc0; f603b693-7e41-4efe-9c7c-8ae3635ddbc0=720; userID=413b9d85-6fc3-4456-9385-09aac5cb0df6; user-role=Admin; portalUrl=https%3A//192.168.112.200%3A9443/; softwarePlatformName=DOCKER_COMPOSE; isPinBottom=false; eads-session-id=400a2cd5194e4d00b1f43e98dfd283dc; eads-session-info=df622d91229a35f20c1b4decf3aee2772ece9a7eb64837fed03928240a857d05; XSRF-TOKEN=UU96aEhIeDdKeVkyWkg1S3N2dGwrWnRrZDJrM2JPVGcwYlIxU21OL2ZoRUc1SkJvaU1OUFhvMXBiVjdsZm9pUQ==",
+						"value": "authToken={{VAR_AUTH_TOKEN}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "https://192.168.112.180/notifier/notificationservice/notifications/ext/active?notificationSource=Postman",
+					"raw": "https://{{VAR_IP_ADRESS}}/notifier/notificationservice/notifications/ext/active?notificationSource=Postman",
 					"protocol": "https",
 					"host": [
-						"192",
-						"168",
-						"112",
-						"180"
+						"{{VAR_IP_ADRESS}}"
 					],
 					"path": [
 						"notifier",
@@ -36,16 +122,6 @@
 						{
 							"key": "notificationSource",
 							"value": "Postman"
-						},
-						{
-							"key": "userId",
-							"value": "eva.kaul@siemens.com",
-							"disabled": true
-						},
-						{
-							"key": "userFilter",
-							"value": "true",
-							"disabled": true
 						}
 					]
 				}
@@ -59,18 +135,15 @@
 				"header": [
 					{
 						"key": "Cookie",
-						"value": "selectedLocale=en-us; EdgeCoreID=c7dea460533b4ef7b671135a925d1d69; osPlatformName=FEDORA; domainName=192.168.112.200%3A9443; allowUserManagement=true; edgeMode=managed; boxCodeLogin=true; queryString={\"client_id\":[\"d6b80eb290eb4820b2bab0a19824c532\"],\"connect_uri\":[\"https://192.168.112.180/device/edge/\"],\"redirect_uri\":[\"https://192.168.112.180/device/edge/\"],\"response_type\":[\"code\"]}; signInType=SignUpWithCodeOnly; client_id=d6b80eb290eb4820b2bab0a19824c532; connect_uri=https://192.168.112.180/device/edge/; redirect_uri=https://192.168.112.180/device/edge/; response_type=code; sessionID=Tue, 07 Dec 2021 07:38:49 GMT; authToken=f603b693-7e41-4efe-9c7c-8ae3635ddbc0; f603b693-7e41-4efe-9c7c-8ae3635ddbc0=720; userID=413b9d85-6fc3-4456-9385-09aac5cb0df6; user-role=Admin; portalUrl=https%3A//192.168.112.200%3A9443/; softwarePlatformName=DOCKER_COMPOSE; isPinBottom=false; eads-session-id=400a2cd5194e4d00b1f43e98dfd283dc; eads-session-info=df622d91229a35f20c1b4decf3aee2772ece9a7eb64837fed03928240a857d05; XSRF-TOKEN=UU96aEhIeDdKeVkyWkg1S3N2dGwrWnRrZDJrM2JPVGcwYlIxU21OL2ZoRUc1SkJvaU1OUFhvMXBiVjdsZm9pUQ==",
+						"value": "authToken={{VAR_AUTH_TOKEN}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "https://192.168.112.180/notifier/notificationservice/notifications/ext/active/:id?notificationSource=Postman",
+					"raw": "https://{{VAR_IP_ADRESS}}/notifier/notificationservice/notifications/ext/active/:id?notificationSource=Postman",
 					"protocol": "https",
 					"host": [
-						"192",
-						"168",
-						"112",
-						"180"
+						"{{VAR_IP_ADRESS}}"
 					],
 					"path": [
 						"notifier",
@@ -89,54 +162,8 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "18"
+							"value": "72"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "raise notification",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Cookie",
-						"value": "selectedLocale=en-us; EdgeCoreID=c7dea460533b4ef7b671135a925d1d69; osPlatformName=FEDORA; domainName=192.168.112.200%3A9443; allowUserManagement=true; edgeMode=managed; boxCodeLogin=true; queryString={\"client_id\":[\"d6b80eb290eb4820b2bab0a19824c532\"],\"connect_uri\":[\"https://192.168.112.180/device/edge/\"],\"redirect_uri\":[\"https://192.168.112.180/device/edge/\"],\"response_type\":[\"code\"]}; signInType=SignUpWithCodeOnly; client_id=d6b80eb290eb4820b2bab0a19824c532; connect_uri=https://192.168.112.180/device/edge/; redirect_uri=https://192.168.112.180/device/edge/; response_type=code; sessionID=Tue, 07 Dec 2021 07:38:49 GMT; authToken=f603b693-7e41-4efe-9c7c-8ae3635ddbc0; f603b693-7e41-4efe-9c7c-8ae3635ddbc0=720; userID=413b9d85-6fc3-4456-9385-09aac5cb0df6; user-role=Admin; portalUrl=https%3A//192.168.112.200%3A9443/; softwarePlatformName=DOCKER_COMPOSE; isPinBottom=false; eads-session-id=400a2cd5194e4d00b1f43e98dfd283dc; eads-session-info=df622d91229a35f20c1b4decf3aee2772ece9a7eb64837fed03928240a857d05; XSRF-TOKEN=UU96aEhIeDdKeVkyWkg1S3N2dGwrWnRrZDJrM2JPVGcwYlIxU21OL2ZoRUc1SkJvaU1OUFhvMXBiVjdsZm9pUQ==",
-						"type": "text"
-					},
-					{
-						"key": "X-XSRF-TOKEN",
-						"value": "Y0lLaUZjSjlzdmU0TVFwUGorMnZ6UG1qSzEzY1EvdWJYcmIxL1FIazljRlhXek5EWVhrQitQdCtaTEc0YStRNw%3D%3D",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"notificationTypeId\": \"1\",\r\n  \"eventText\": \"ALERT from Postman\",\r\n  \"assetId\": \"549c3daa33cd4628b02c2e2745f54d80\",\r\n  \"notificationSource\": \"Postman\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://192.168.112.180/notifier/notificationservice/notifications/ext/raise",
-					"protocol": "https",
-					"host": [
-						"192",
-						"168",
-						"112",
-						"180"
-					],
-					"path": [
-						"notifier",
-						"notificationservice",
-						"notifications",
-						"ext",
-						"raise"
 					]
 				}
 			},
@@ -149,18 +176,15 @@
 				"header": [
 					{
 						"key": "Cookie",
-						"value": "selectedLocale=en-us; EdgeCoreID=c7dea460533b4ef7b671135a925d1d69; osPlatformName=FEDORA; domainName=192.168.112.200%3A9443; allowUserManagement=true; edgeMode=managed; boxCodeLogin=true; queryString={\"client_id\":[\"d6b80eb290eb4820b2bab0a19824c532\"],\"connect_uri\":[\"https://192.168.112.180/device/edge/\"],\"redirect_uri\":[\"https://192.168.112.180/device/edge/\"],\"response_type\":[\"code\"]}; signInType=SignUpWithCodeOnly; client_id=d6b80eb290eb4820b2bab0a19824c532; connect_uri=https://192.168.112.180/device/edge/; redirect_uri=https://192.168.112.180/device/edge/; response_type=code; sessionID=Tue, 07 Dec 2021 07:38:49 GMT; authToken=f603b693-7e41-4efe-9c7c-8ae3635ddbc0; f603b693-7e41-4efe-9c7c-8ae3635ddbc0=720; userID=413b9d85-6fc3-4456-9385-09aac5cb0df6; user-role=Admin; portalUrl=https%3A//192.168.112.200%3A9443/; softwarePlatformName=DOCKER_COMPOSE; isPinBottom=false; eads-session-id=400a2cd5194e4d00b1f43e98dfd283dc; eads-session-info=df622d91229a35f20c1b4decf3aee2772ece9a7eb64837fed03928240a857d05; XSRF-TOKEN=UU96aEhIeDdKeVkyWkg1S3N2dGwrWnRrZDJrM2JPVGcwYlIxU21OL2ZoRUc1SkJvaU1OUFhvMXBiVjdsZm9pUQ==",
+						"value": "authToken={{VAR_AUTH_TOKEN}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "https://192.168.112.180/notifier/notificationservice/notifications/:id/ext/accept?userId=user@siemens.com&notificationSource=Postman",
+					"raw": "https://{{VAR_IP_ADRESS}}/notifier/notificationservice/notifications/:id/ext/accept?userId={{VAR_USER}}&notificationSource=Postman",
 					"protocol": "https",
 					"host": [
-						"192",
-						"168",
-						"112",
-						"180"
+						"{{VAR_IP_ADRESS}}"
 					],
 					"path": [
 						"notifier",
@@ -173,7 +197,7 @@
 					"query": [
 						{
 							"key": "userId",
-							"value": "user@siemens.com"
+							"value": "{{VAR_USER}}"
 						},
 						{
 							"key": "notificationSource",
@@ -183,7 +207,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "20"
+							"value": "72"
 						}
 					]
 				}
@@ -197,18 +221,15 @@
 				"header": [
 					{
 						"key": "Cookie",
-						"value": "selectedLocale=en-us; EdgeCoreID=c7dea460533b4ef7b671135a925d1d69; osPlatformName=FEDORA; domainName=192.168.112.200%3A9443; allowUserManagement=true; edgeMode=managed; boxCodeLogin=true; queryString={\"client_id\":[\"d6b80eb290eb4820b2bab0a19824c532\"],\"connect_uri\":[\"https://192.168.112.180/device/edge/\"],\"redirect_uri\":[\"https://192.168.112.180/device/edge/\"],\"response_type\":[\"code\"]}; signInType=SignUpWithCodeOnly; client_id=d6b80eb290eb4820b2bab0a19824c532; connect_uri=https://192.168.112.180/device/edge/; redirect_uri=https://192.168.112.180/device/edge/; response_type=code; sessionID=Tue, 07 Dec 2021 07:38:49 GMT; authToken=f603b693-7e41-4efe-9c7c-8ae3635ddbc0; f603b693-7e41-4efe-9c7c-8ae3635ddbc0=720; userID=413b9d85-6fc3-4456-9385-09aac5cb0df6; user-role=Admin; portalUrl=https%3A//192.168.112.200%3A9443/; softwarePlatformName=DOCKER_COMPOSE; isPinBottom=false; eads-session-id=400a2cd5194e4d00b1f43e98dfd283dc; eads-session-info=df622d91229a35f20c1b4decf3aee2772ece9a7eb64837fed03928240a857d05; XSRF-TOKEN=UU96aEhIeDdKeVkyWkg1S3N2dGwrWnRrZDJrM2JPVGcwYlIxU21OL2ZoRUc1SkJvaU1OUFhvMXBiVjdsZm9pUQ==",
+						"value": "authToken={{VAR_AUTH_TOKEN}}",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "https://192.168.112.180/notifier/notificationservice/notifications/:id/ext/clear",
+					"raw": "https://{{VAR_IP_ADRESS}}/notifier/notificationservice/notifications/:id/ext/clear",
 					"protocol": "https",
 					"host": [
-						"192",
-						"168",
-						"112",
-						"180"
+						"{{VAR_IP_ADRESS}}"
 					],
 					"path": [
 						"notifier",
@@ -221,12 +242,82 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "18"
+							"value": "72"
 						}
 					]
 				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"const url = \"https://\" + pm.collectionVariables.get(\"VAR_IP_ADRESS\");",
+					"const user = pm.collectionVariables.get(\"VAR_USER\");",
+					"const password = pm.collectionVariables.get(\"VAR_PASSWORD\");",
+					"const tokenUrl = url + \"/device/edge/api/v1/login/direct\";",
+					"",
+					"const postRequest = {",
+					"  url: tokenUrl,",
+					"  method: 'POST',",
+					"  header: {",
+					"    'Content-Type': 'application/json'",
+					"  },",
+					"  body: JSON.stringify({",
+					"\t\t  'username': user,",
+					"\t\t  'password': password",
+					"  }),",
+					"};",
+					"",
+					"pm.sendRequest(postRequest, (error, response) => {",
+					"    console.log(error ? error : response.json());",
+					"    pm.collectionVariables.set(\"VAR_AUTH_TOKEN\", response.json().data.access_token);",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "VAR_IP_ADRESS",
+			"value": "ip adress of edge device"
+		},
+		{
+			"key": "VAR_ASSET_ID",
+			"value": "asset id of data service asset"
+		},
+		{
+			"key": "VAR_CLIENT_ID",
+			"value": "get ID from the browser cookies when logged into the edge device; ID doesn't change",
+			"type": "string"
+		},
+		{
+			"key": "VAR_USER",
+			"value": "user email adress for login into edge device",
+			"type": "string"
+		},
+		{
+			"key": "VAR_PASSWORD",
+			"value": "user password for login into edge device",
+			"type": "string"
+		},
+		{
+			"key": "VAR_AUTH_TOKEN",
+			"value": "-- filled automatically --",
+			"type": "string"
 		}
 	]
 }
