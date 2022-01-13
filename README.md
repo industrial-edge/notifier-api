@@ -106,11 +106,11 @@ You can find further information about the following steps [here](docs/FlowCreat
 The Notifier OpenAPI requests can also be tested and used via the API platform Postman.
 You can find further information about the following steps [here](docs/Postman.md).
 
+- [Raise one notification](docs/Postman.md#raise-one-notification)
 - [List all notifications](docs/Postman.md#list-all-notifications)
 - [List one notification](docs/Postman.md#list-one-notification)
 - [Accept one notification](docs/Postman.md#accept-one-notification)
 - [Clear one notification](docs/Postman.md#clear-one-notification)
-- [Raise one notification](docs/Postman.md#raise-one-notification)
 
 ## Documentation
 
