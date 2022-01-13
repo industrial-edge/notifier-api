@@ -11,7 +11,7 @@ Postman is an API platform for using and testing APIs in a simple way. To execut
 
 ![postman_header](/docs/graphics/postman_header1.png)
 
-A **postman collection**, that contains all the following requests, can be downloaded [here](/src/postman_collection.json) and imported into Postman. Before starting any request, the collection variables must be set properly. A valid authentication token is then provided automatically when sending a request.
+A **postman collection**, that contains all the following requests, can be downloaded [here](/src/postman_collection.json) and imported into Postman. Before starting any request, the collection variables must be set properly. A valid authentication token is then provided automatically and set in each request header, when sending a request.
 
 ![postman_variables](/docs/graphics/postman_variables.png)
 
