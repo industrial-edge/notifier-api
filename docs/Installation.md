@@ -148,20 +148,20 @@ The application now provides several ways of configuration, that can be selected
 - Click on the install button on the right of the version you want to deploy
 - Under "Schema Configurations" select the above created UI configuration and fill the parameter
 
-![config_ui](/docs/graphics/config_ui.png)
-
 OR
 
 - Under "Other Configurations" select the above created configuration for fixed file
+
+![config_ui](/docs/graphics/config_ui.png)
 
 - Select the corresponing Industrial Edge Device
 - Click "Install Now" and wait for the job to be finished successfully
 
 ## Configure PLC project
 
-- Open TIA portal and open the project containing the filling application
+- Open TIA portal and open the project containing the tank filling application
 - Download the PLC program to the PLC and set the PLC into RUN
-- Open the HMI to start the filling application
+- Open the HMI to start the tank filling application
 
 ## Configure PLC connection
 
@@ -176,11 +176,30 @@ The S7 Connector sends the data to the Databus, from where the app collects the 
 ## Test the application
 
 - Go to your Edge device and start the KPI calculation and notification app
-- Make sure that the defined S7 Connector tags for faulty and produced value deliver valid data
+- Make sure the tank filling application is running and number of produced bottles is increasing
+- Simulate some faulty bottles in the tank filling application by clicking "next bottle" in the corresponding HMI
 - The app uses the following formula to calculate the KPI value: `quality [%] = 100 - ( <faulty> / <produced> * 100 )`
 - As soon as one of the defined limits (min/max) is passed, the app sends a notification to the Notifier
 - You can watch the incoming notifications on the Notifier UI
 
+Example for min limit:
+- Simulate 7 faulty bottles
+- Wait for 20 bottles to be produced
+- KPI = 100 - (7 / 20 * 100) = 65
+- KPI is below limit of 70
+
+=> notification is send
+
 ![notification_min](/docs/graphics/notification_min.png)
 
+Example for max limit:
+- Simulate 1 faulty bottles
+- Wait for 20 bottles to be produced
+- KPI = 100 - (1 / 20 * 100) = 95
+- KPI is above limit of 90
+
+=> notification is send
+
 ![notification_max](/docs/graphics/notification_max.png)
+
+> Hint: The application only sends **one** notification when a limit is reached (like a flank). Afterwards the KPI must go back into rated range or hit the opposite limit to send another notification.
