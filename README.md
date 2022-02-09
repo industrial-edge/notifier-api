@@ -53,7 +53,7 @@ Furthermore, by using the Flow Creator and Postman, it is possible to handle and
   - IE App Configuration Service V1.0.7
   - IE Databus Configurator V1.4.22
   - IE Databus V1.4.16
-  - S7 Connector Configurator V1.4.9
+  - S7 Connector Configurator V1.4.6
   - S7 Connector V1.4.10
 - Industrial Edge Device (IED) V1.3.0-57
   - Notifier V1.3.0-11296596
