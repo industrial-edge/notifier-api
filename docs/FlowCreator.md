@@ -210,7 +210,7 @@ return msg;
 - **notificationTypeId**: 1 (alert) / 2 (warning) / 3 (information)
 - **eventText**: message text (can be any string)
 - **assetId**: id of asset in Data Service (looks like '549c3daa33cd4628b02c2e2745f54d80')
-- **notificationSource**: who sended the notification, e.g. "KPI calculation app" (can be any string, but do not use blanks within)
+- **notificationSource**: who sended the notification, e.g. "KPI calculation app" (can be any string)
 
 > **AssetId:**
 > To get the assetId, either look up in Data Service > select asset > copy id from URL  OR  execute a http request to GET notification and copy the assetId from the response.

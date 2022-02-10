@@ -10,7 +10,7 @@ This guide shows how to use the Notifier OpenAPI in different ways. Here the Ope
     - [Used components](#used-components)
     - [Further requirements](#further-requirements)
     - [TIA Project](#tia-project)
-  - [Using Notifier OpenAPI within a custom app](#using-notifier-openapi-within-a-custom-app)
+  - [Implement Notifier OpenAPI within a custom app](#implement-notifier-openapi-within-a-custom-app)
   - [Using Notifier OpenAPI within the Flow Creator](#using-notifier-openapi-within-the-flow-creator)
   - [Using Notifier OpenAPI with Postman](#using-notifier-openapi-with-postman)
   - [Documentation](#documentation)
@@ -23,11 +23,11 @@ This guide shows how to use the Notifier OpenAPI in different ways. Here the Ope
 
 The Notifier OpenAPI definition contains the following HTTP requests:
 
-V1.1:
+Supported since Notifier V1.3:
 
 ![api-calls](docs/graphics/api_calls.png)
 
-V1.0 (deprecated)
+Supported since Notifier V1.2 (deprecated):
 
 ![api-calls-old](docs/graphics/api_calls_old.png)
 
@@ -79,7 +79,7 @@ The used TIA Portal project can be found here:
 
 - [Tia Tank Application](https://github.com/industrial-edge/miscellaneous/tree/main/tank%20application)
 
-## Using Notifier OpenAPI within a custom app
+## Implement Notifier OpenAPI within a custom app
 
 You can find further information about the following steps [here](docs/Installation.md).
 
