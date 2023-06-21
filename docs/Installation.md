@@ -13,7 +13,7 @@
   - [Configure PLC connection](#configure-plc-connection)
   - [Test the application](#test-the-application)
 
-This app calculates and monitors a KPI value, which input data is coming from the S7 Connector into the Databus. The app connects to the Databus via MQTT and and subscribes to the S7 Connector topic. The defined tags containing the KPI data are queried and the KPI value is calculated frequently. In case the defined min and max limits are passed, a notification message is send to the Notifier app on the IED. To use the app, the user must define a user and password for the Databus, the Data Service asset that is used, two input tags that are coming from S7 Connector, as well as a min and max limit of the KPI value.
+This app calculates and monitors a KPI value, which input data is coming from the OPC UA Connector into the Databus. The app connects to the Databus via MQTT and and subscribes to the OPC UA Connector topic. The defined tags containing the KPI data are queried and the KPI value is calculated frequently. In case the defined min and max limits are passed, a notification message is send to the Notifier app on the IED. To use the app, the user must define a user and password for the Databus, the Data Service asset that is used, two input tags that are coming from OPC UA Connector, as well as a min and max limit of the KPI value.
 
 ![overview_app](/docs/graphics/overview_app.png)
 
@@ -89,8 +89,8 @@ For this KPI calculation and notification app, several parameters need to be con
 
 - "MQTT_USER": username of the databus user
 - "MQTT_PASSWORD": password of the databus user
-- "TAG_FAULTY": S7 connector tag for faulty value (e.g. "faulty" for S7 or "GDB.process.numberFaulty" for OpcUa)
-- "TAG_PRODUCED": S7 connector tag for produced value  (e.g. "produced" for S7 or "GDB.process.numberProduced" for OpcUa)
+- "TAG_FAULTY": OPC UA connector tag for faulty value (e.g. "faulty" for OPC UA or "GDB.process.numberFaulty" for OpcUa)
+- "TAG_PRODUCED": OPC UA connector tag for produced value  (e.g. "produced" for OPC UA or "GDB.process.numberProduced" for OpcUa)
 - "LIMIT_MIN": minimum limit value for the KPI value
 - "LIMIT_MAX": maximum limit value for the KPI value
 - "ASSET": data service asset, that is necessary for the notifications
@@ -185,11 +185,11 @@ OR
 
 ## Configure PLC connection
 
-To read data from the PLC and provide the data, use the S7 Connector to establish a connection to the PLC (e.g. via OPC UA or S7). Create two tags for faulty and produced value.
+To read data from the PLC and provide the data, use the OPC UA Connector to establish a connection to the PLC (e.g. via OPC UA or OPC UA). Create two tags for faulty and produced value.
 
 ![s7_connector](/docs/graphics/s7_connector.png)
 
-The S7 Connector sends the data to the Databus, from where the app collects the data for the KPI calculation. Therefore you need to create a suitable Databus topic.
+The OPC UA Connector sends the data to the Databus, from where the app collects the data for the KPI calculation. Therefore you need to create a suitable Databus topic.
 
 ![databus](/docs/graphics/databus.png)
 

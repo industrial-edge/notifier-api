@@ -59,7 +59,7 @@ Furthermore, by using the Flow Creator and Postman, it is possible to handle and
   - Common Connector Configurator V1.8.1-4
   - OPC UA Connector V1.8.1
 - Industrial Edge Device (IED) V1.10.0-9
-  - Notifier V1.15.0
+  - Notifier V1.3.0-11296596
   - Flow Creator V 1.12.0-1
 - Industrial Edge App Publisher V1.10.5
 - Docker Engine V20.10.10
