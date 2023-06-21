@@ -2,6 +2,8 @@
 
 - [Implement Notifier OpenAPI within a custom app](#implement-notifier-openapi-within-a-custom-app)
   - [Build application](#build-application)
+    - [Download Repository](#download-repository)
+    - [Build docker image](#build-docker-image)
   - [Upload application to the Industrial Edge Managment](#upload-application-to-the-industrial-edge-managment)
   - [Create configuration for the application](#create-configuration-for-the-application)
     - [Configuration via fixed config file](#configuration-via-fixed-config-file)
@@ -37,11 +39,29 @@ request.send(postMin);
 
 ## Build application
 
-- Download the source code to your engineering VM
-- Open a console in the source code folder where the docker-compose.yml file is located
-- Use command `docker-compose build` to create the docker image
-- This docker image can now be used to build you app with the Industrial Edge App Publisher
-- *docker images | grep kpi_notifier* can be used to check for the images
+### Download Repository
+
+Download or clone the repository source code to your workstation.  
+![Github Clone Section](graphics/clonerepo.png)
+
+
+* Trough terminal:
+```bash
+git clone https://github.com/industrial-edge/notifier-api.git
+```
+
+* Trough VSCode:  
+<kbd>CTRL</kbd>+<kbd>&uarr; SHIFT</kbd>+<kbd>P</kbd> or <kbd>F1</kbd> to open VSCode's command pallette and type `git clone`:
+
+![VS Code Git Clone command](graphics/git.png)
+
+### Build docker image
+
+- Navigate into `src` and find the file named `Dockerfile.example`. The `Dockerfile.example` is an example Dockerfile that can be used to build the Docker images of the backend and the frontend. If you choose to use these, rename them both to `Dockerfile` before proceeding
+- Open a console in the root folder (where the `docker-compose` file is)
+- Use the `docker compose build` (replaces the older `docker-compose build`) command to build the docker image of the service which is specified in the docker-compose.yml file.
+- These Docker images can now be used to build your app with the Industrial Edge App Publisher
+- `docker images` can be used to check for the images
 
 ## Upload application to the Industrial Edge Managment
 
@@ -98,7 +118,7 @@ Here a fixed configuration file is used for configuration, that cannot be modifi
 }
 ```
 
-In this example, the application will authenticate to the IE databus with the username "edge" and password "edge". It will subscribe to the tags "GDB.process.numberFaulty" and "GDB.process.numberFaulty". The limits are set to 70 and 90. The asset id is "549c3daa33cd4628b02c2e2745f54d80", which belongs to the asset "edge/tank application" in the Data Service.
+In this example, the application will authenticate to the databus with the username "edge" and password "edge". It will subscribe to the tags "GDB.process.numberFaulty" and "GDB.process.numberFaulty". The limits are set to 70 and 90. The asset id is "549c3daa33cd4628b02c2e2745f54d80", which belongs to the asset "edge/tank application" in the Data Service.
 
 The corresponding configuration file can be found [here](/cfg-data/mqtt-config.json).
 
