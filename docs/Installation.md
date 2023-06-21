@@ -2,6 +2,8 @@
 
 - [Implement Notifier OpenAPI within a custom app](#implement-notifier-openapi-within-a-custom-app)
   - [Build application](#build-application)
+    - [Download Repository](#download-repository)
+    - [Build docker image](#build-docker-image)
   - [Upload application to the Industrial Edge Managment](#upload-application-to-the-industrial-edge-managment)
   - [Create configuration for the application](#create-configuration-for-the-application)
     - [Configuration via fixed config file](#configuration-via-fixed-config-file)
@@ -11,7 +13,7 @@
   - [Configure PLC connection](#configure-plc-connection)
   - [Test the application](#test-the-application)
 
-This app calculates and monitors a KPI value, which input data is coming from the S7 Connector into the Databus. The app connects to the Databus via MQTT and and subscribes to the S7 Connector topic. The defined tags containing the KPI data are queried and the KPI value is calculated frequently. In case the defined min and max limits are passed, a notification message is send to the Notifier app on the IED. To use the app, the user must define a user and password for the Databus, the Data Service asset that is used, two input tags that are coming from S7 Connector, as well as a min and max limit of the KPI value.
+This app calculates and monitors a KPI value, which input data is coming from the OPC UA Connector into the Databus. The app connects to the Databus via MQTT and and subscribes to the OPC UA Connector topic. The defined tags containing the KPI data are queried and the KPI value is calculated frequently. In case the defined min and max limits are passed, a notification message is send to the Notifier app on the IED. To use the app, the user must define a user and password for the Databus, the Data Service asset that is used, two input tags that are coming from OPC UA Connector, as well as a min and max limit of the KPI value.
 
 ![overview_app](/docs/graphics/overview_app.png)
 
@@ -37,11 +39,29 @@ request.send(postMin);
 
 ## Build application
 
-- Download the source code to your engineering VM
-- Open a console in the source code folder where the docker-compose.yml file is located
-- Use command `docker-compose build` to create the docker image
-- This docker image can now be used to build you app with the Industrial Edge App Publisher
-- *docker images | grep kpi_notifier* can be used to check for the images
+### Download Repository
+
+Download or clone the repository source code to your workstation.  
+![Github Clone Section](graphics/clonerepo.png)
+
+
+* Trough terminal:
+```bash
+git clone https://github.com/industrial-edge/notifier-api.git
+```
+
+* Trough VSCode:  
+<kbd>CTRL</kbd>+<kbd>&uarr; SHIFT</kbd>+<kbd>P</kbd> or <kbd>F1</kbd> to open VSCode's command pallette and type `git clone`:
+
+![VS Code Git Clone command](graphics/git.png)
+
+### Build docker image
+
+- Navigate into `src` and find the file named `Dockerfile.example`. The `Dockerfile.example` is an example Dockerfile that can be used to build the docker image(s) of the service(s) that runs in this application example. If you choose to use these, rename them to `Dockerfile` before proceeding
+- Open a console in the root folder (where the `docker-compose` file is)
+- Use the `docker compose build` (replaces the older `docker-compose build`) command to build the docker image of the service which is specified in the docker-compose.yml file.
+- These Docker images can now be used to build your app with the Industrial Edge App Publisher
+- `docker images` can be used to check for the images
 
 ## Upload application to the Industrial Edge Managment
 
@@ -69,8 +89,8 @@ For this KPI calculation and notification app, several parameters need to be con
 
 - "MQTT_USER": username of the databus user
 - "MQTT_PASSWORD": password of the databus user
-- "TAG_FAULTY": S7 connector tag for faulty value (e.g. "faulty" for S7 or "GDB.process.numberFaulty" for OpcUa)
-- "TAG_PRODUCED": S7 connector tag for produced value  (e.g. "produced" for S7 or "GDB.process.numberProduced" for OpcUa)
+- "TAG_FAULTY": OPC UA connector tag for faulty value (e.g. "faulty" for OPC UA or "GDB.process.numberFaulty" for OpcUa)
+- "TAG_PRODUCED": OPC UA connector tag for produced value  (e.g. "produced" for OPC UA or "GDB.process.numberProduced" for OpcUa)
 - "LIMIT_MIN": minimum limit value for the KPI value
 - "LIMIT_MAX": maximum limit value for the KPI value
 - "ASSET": data service asset, that is necessary for the notifications
@@ -98,7 +118,7 @@ Here a fixed configuration file is used for configuration, that cannot be modifi
 }
 ```
 
-In this example, the application will authenticate to the IE databus with the username "edge" and password "edge". It will subscribe to the tags "GDB.process.numberFaulty" and "GDB.process.numberFaulty". The limits are set to 70 and 90. The asset id is "549c3daa33cd4628b02c2e2745f54d80", which belongs to the asset "edge/tank application" in the Data Service.
+In this example, the application will authenticate to the databus with the username "edge" and password "edge". It will subscribe to the tags "GDB.process.numberFaulty" and "GDB.process.numberFaulty". The limits are set to 70 and 90. The asset id is "549c3daa33cd4628b02c2e2745f54d80", which belongs to the asset "edge/tank application" in the Data Service.
 
 The corresponding configuration file can be found [here](/cfg-data/mqtt-config.json).
 
@@ -165,11 +185,11 @@ OR
 
 ## Configure PLC connection
 
-To read data from the PLC and provide the data, use the S7 Connector to establish a connection to the PLC (e.g. via OPC UA or S7). Create two tags for faulty and produced value.
+To read data from the PLC and provide the data, use the OPC UA Connector to establish a connection to the PLC (e.g. via OPC UA or OPC UA). Create two tags for faulty and produced value.
 
 ![s7_connector](/docs/graphics/s7_connector.png)
 
-The S7 Connector sends the data to the Databus, from where the app collects the data for the KPI calculation. Therefore you need to create a suitable Databus topic.
+The OPC UA Connector sends the data to the Databus, from where the app collects the data for the KPI calculation. Therefore you need to create a suitable Databus topic.
 
 ![databus](/docs/graphics/databus.png)
 

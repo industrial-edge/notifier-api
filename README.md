@@ -15,7 +15,8 @@ This guide shows how to use the Notifier OpenAPI in different ways. Here the Ope
   - [Using Notifier OpenAPI with Postman](#using-notifier-openapi-with-postman)
   - [Documentation](#documentation)
   - [Contribution](#contribution)
-  - [Licence and Legal Information](#licence-and-legal-information)
+  - [License and Legal Information](#license-and-legal-information)
+  - [Disclaimer](#disclaimer)
 
 ## Description
 
@@ -39,28 +40,30 @@ Using these HTTP requests, notifications can be for example triggered from anoth
 
 This how to shows two ways of using the Notifier OpenAPI.
 
-First it is described how to implement a JavaScript app in Docker including the Notifier OpenAPI. The app calculates and monitors a KPI value. Therefore the user can define two input tags that are coming from S7 Connector, as well as a min and max limit of the KPI value. In case these limits are passed, the app sends a notification to the Notifier app on the IED.
+First it is described how to implement a JavaScript app in Docker including the Notifier OpenAPI. The app calculates and monitors a KPI value. Therefore the user can define two input tags that are coming from OPC UA Connector, as well as a min and max limit of the KPI value. In case these limits are passed, the app sends a notification to the Notifier app on the IED.
 
-![overview](docs/graphics/overview.png)
+![overview-js](docs/graphics/overviewjs.png)
 
 Furthermore, by using the Flow Creator and Postman, it is possible to handle and test API calls to the Notifier app. With both tools we will list, accept, clear and raise notification in the Notifier app via its API. For that reason the JS app needs to be on the same Edge Device and running.
+
+![overview-fc](docs/graphics/overviewfc.png)
 
 ## Requirements
 
 ### Used components
 
-- Industrial Edge Management (IEM) V1.3.0-58 / V1.4.3
-  - IE App Configuration Service V1.0.7
-  - IE Databus Configurator V1.4.22
-  - IE Databus V1.4.16
-  - S7 Connector Configurator V1.4.6
-  - S7 Connector V1.4.10
-- Industrial Edge Device (IED) V1.3.0-57
+- Industrial Edge Management (IEM) V1.5.2-4 / V1.11.8
+  - IE App Configuration Service V1.2.2
+  - Databus Configurator V2.0.0-5
+  - Databus V2.0.0-4
+  - Common Connector Configurator V1.8.1-4
+  - OPC UA Connector V1.8.1
+- Industrial Edge Device (IED) V1.10.0-9
   - Notifier V1.3.0-11296596
-  - IE Flow Creator V1.2.2
-- Industrial Edge App Publisher V1.4.3
+  - Flow Creator V 1.12.0-1
+- Industrial Edge App Publisher V1.10.5
 - Docker Engine V20.10.10
-- Docker Compose V1.28.5
+- Docker Compose V2.4
 - TIA Portal V16
 - PlcSim Advanced for CPU 1518 ODK
 
@@ -113,13 +116,13 @@ You can find further information about the following steps [here](docs/Postman.m
 - [Clear one notification](docs/Postman.md#clear-one-notification)
 
 ## Documentation
-
-You can find further documentation and help in the following links.
-
-- [Industrial Edge Hub](https://iehub.eu1.edge.siemens.cloud/#/documentation)
-- [Industrial Edge Forum](https://www.siemens.com/industrial-edge-forum)
-- [Industrial Edge landing page](https://new.siemens.com/global/en/products/automation/topic-areas/industrial-edge/simatic-edge.html)
-- [Industrial Edge GitHub page](https://github.com/industrial-edge)
+ 
+- You can find further documentation and help in the following links
+  - [Industrial Edge Hub](https://iehub.eu1.edge.siemens.cloud/#/documentation)
+  - [Industrial Edge Forum](https://forum.mendix.com/link/space/industrial-edge)
+  - [Industrial Edge landing page](https://new.siemens.com/global/en/products/automation/topic-areas/industrial-edge/simatic-edge.html)
+  - [Industrial Edge GitHub page](https://github.com/industrial-edge)
+  - [Industrial Edge documentation page](https://docs.eu1.edge.siemens.cloud/index.html)
   
 ## Contribution
 
@@ -127,6 +130,13 @@ Thank you for your interest in contributing. Anybody is free to report bugs, unc
 Additionally everybody is free to propose any changes to this repository using Pull Requests.
 
 If you are interested in contributing via Pull Request, please check the [Contribution License Agreement](Siemens_CLA_1.1.pdf) and forward a signed copy to [industrialedge.industry@siemens.com](mailto:industrialedge.industry@siemens.com?subject=CLA%20Agreement%20Industrial-Edge).
-## Licence and Legal Information
 
-Please read the [Legal information](LICENSE.md).
+## License and Legal Information
+
+Please read the [Legal information](LICENSE.txt).
+
+## Disclaimer
+
+IMPORTANT - PLEASE READ CAREFULLY:
+
+This documentation describes how you can download and set up containers which consist of or contain third-party software. By following this documentation you agree that using such third-party software is done at your own discretion and risk. No advice or information, whether oral or written, obtained by you from us or from this documentation shall create any warranty for the third-party software. Additionally, by following these descriptions or using the contents of this documentation, you agree that you are responsible for complying with all third party licenses applicable to such third-party software. All product names, logos, and brands are property of their respective owners. All third-party company, product and service names used in this documentation are for identification purposes only. Use of these names, logos, and brands does not imply endorsement.
