@@ -40,7 +40,7 @@ Using these HTTP requests, notifications can be for example triggered from anoth
 
 This how to shows two ways of using the Notifier OpenAPI.
 
-First it is described how to implement a JavaScript app in Docker including the Notifier OpenAPI. The app calculates and monitors a KPI value. Therefore the user can define two input tags that are coming from S7 Connector, as well as a min and max limit of the KPI value. In case these limits are passed, the app sends a notification to the Notifier app on the IED.
+First it is described how to implement a JavaScript app in Docker including the Notifier OpenAPI. The app calculates and monitors a KPI value. Therefore the user can define two input tags that are coming from OPC UA Connector, as well as a min and max limit of the KPI value. In case these limits are passed, the app sends a notification to the Notifier app on the IED.
 
 ![overview-js](docs/graphics/overviewjs.png)
 
