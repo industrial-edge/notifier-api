@@ -187,7 +187,7 @@ OR
 
 To read data from the PLC and provide the data, use the OPC UA Connector to establish a connection to the PLC (e.g. via OPC UA or OPC UA). Create two tags for faulty and produced value.
 
-<img src="/docs/graphics/s7_connector.png" width="800">
+<img src="/docs/graphics/opcua_connector_connector.png" width="800">
 
 The OPC UA Connector sends the data to the Databus, from where the app collects the data for the KPI calculation. Therefore you need to create a suitable Databus topic.
 
