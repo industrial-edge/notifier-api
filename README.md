@@ -52,21 +52,24 @@ Furthermore, by using the Flow Creator and Postman, it is possible to handle and
 
 ### Used components
 
-- Industrial Edge Management (IEM) V1.15.15 
-- Industrial Edge Device (IED) V1.10.0-9
+- Industrial Edge Management (IEM) V1.15.17
+- Industrial Edge Device (IED) ipc-ied-os 3.2.0.17
 - Management applications:
-  - Databus Configurator V2.0.0-5
-  - IE App Configuration Service V1.2.2
+  - Databus Configurator V3.2.3
+  - Common Configurator V1.1.0
+  - Edge OPC UA Server Configurator V2.3.6
+  - Cloud Connector Configurator V1.23.2
+  - Flow Creator Configurator V1.12.5
 - Device applications:
   - Databus V3.4.0
   - OPC UA Connector V2.4.3
   - Common Configurator V2.5.0
-  - IIH Essentials V2.5.0
+  - IIH Essentials V2.6.0
   - Notifier V1.25.0
-  - Flow Creator V 1.20.0
+  - Flow Creator V 1.19.2
 - Industrial Edge App Publisher V1.26.2
-- Docker Engine V29.6.2
-- Docker Compose V5.3.1
+- Docker Engine V29.7.1
+- Docker Compose V5.4.0
 - TIA Portal V21
 - CPU 1517V V2.2.0+03
 
