@@ -15,7 +15,7 @@
 
 This app calculates and monitors a KPI value, which input data is coming from the OPC UA Connector into the Databus. The app connects to the Databus via MQTT and and subscribes to the OPC UA Connector topic. The defined tags containing the KPI data are queried and the KPI value is calculated frequently. In case the defined min and max limits are passed, a notification message is send to the Notifier app on the IED. To use the app, the user must define a user and password for the Databus, the Data Service asset that is used, two input tags that are coming from OPC UA Connector, as well as a min and max limit of the KPI value.
 
-![overview_app](/docs/graphics/overview_app.png)
+<img src="/docs/graphics/overview_app.png" width="700">
 
 The app is implemented with **JavaScript** in Docker, using the **XMLHttpRequest** API to transfer data via HTTP.
 Here the notification source name was set to "*KPI calculation app*", which can be later used within other API calls.
@@ -41,9 +41,9 @@ request.send(postMin);
 
 ### Download Repository
 
-Download or clone the repository source code to your workstation.  
-![Github Clone Section](graphics/clonerepo.png)
+Download or clone the repository source code to your workstation.
 
+<img src="graphics/clonerepo.png" width="900">
 
 * Trough terminal:
 ```bash
@@ -53,7 +53,7 @@ git clone https://github.com/industrial-edge/notifier-api.git
 * Trough VSCode:  
 <kbd>CTRL</kbd>+<kbd>&uarr; SHIFT</kbd>+<kbd>P</kbd> or <kbd>F1</kbd> to open VSCode's command pallette and type `git clone`:
 
-![VS Code Git Clone command](graphics/git.png)
+<img src="graphics/git.png" width="600">
 
 ### Build docker image
 
@@ -134,7 +134,7 @@ To add a configuration using this file, follow these steps:
 - Browse for the `mqtt-config.json` file
 - Click "Add"
 
-![config_1](/docs/graphics/config_1.png)
+<img src="/docs/graphics/config_1.png" width="400">
 
 ### Configuration via app Configuration Service
 
@@ -156,7 +156,7 @@ To add a configuration using this file, follow these steps:
 - Activate "Json Schema"
 - Click "Add"
 
-![config_2](/docs/graphics/config_2.png)
+<img src="/docs/graphics/config_2.png" width="400">
 
 ## Install the application
 
@@ -172,7 +172,7 @@ OR
 
 - Under "Other Configurations" select the above created configuration for fixed file
 
-![config_ui](/docs/graphics/config_ui.png)
+<img src="/docs/graphics/config_ui.png" width="500">
 
 - Select the corresponing Industrial Edge Device
 - Click "Install Now" and wait for the job to be finished successfully
@@ -187,11 +187,11 @@ OR
 
 To read data from the PLC and provide the data, use the OPC UA Connector to establish a connection to the PLC (e.g. via OPC UA or OPC UA). Create two tags for faulty and produced value.
 
-![s7_connector](/docs/graphics/s7_connector.png)
+<img src="/docs/graphics/opcua_connector_connector.png" width="800">
 
 The OPC UA Connector sends the data to the Databus, from where the app collects the data for the KPI calculation. Therefore you need to create a suitable Databus topic.
 
-![databus](/docs/graphics/databus.png)
+<img src="/docs/graphics/databus.png" width="800">
 
 ## Test the application
 
@@ -223,3 +223,6 @@ Example for max limit:
 ![notification_max](/docs/graphics/notification_max.png)
 
 > Hint: The application only sends **one** notification when a limit is reached (like a flank). Afterwards the KPI must go back into rated range or hit the opposite limit to send another notification.
+
+**[Back to overview](../README.md)**
+

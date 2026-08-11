@@ -2,6 +2,7 @@
 
 - [Using Notifier OpenAPI within the Flow Creator](#using-notifier-openapi-within-the-flow-creator)
   - [Launch the Flow Creator](#launch-the-flow-creator)
+  - [Login and get access token](#login-and-get-access-token)
   - [List all notifications](#list-all-notifications)
   - [List one notification](#list-one-notification)
   - [Accept one notification](#accept-one-notification)
@@ -14,9 +15,47 @@ The Flow Creator, the Notifier and the custom app must be installed on the same 
 
 A ready-to-use flow, that contains all these steps, can be downloaded [here](/src/Flow.json) and imported into the Flow Creator.
 
+## Login and get access token
+
+At the beginning of the workflow the FlowCreator has to get a valid access token from the IED which is then further used by all other API calls.
+
+This is done via the "IED Access Token Generator" Flow, which is included in the above mentioned download file.
+
+In order for this to work you have to enter valid settings for IP, username and password in the node "Set IED Config".
+
+```javascript
+const config = {
+    ip: '139.10.54.79',
+    username: 'edge@siemens.com',
+    password: '@Password'
+};
+```
+
+Once you have set them correctly you can start the Token generator by injecting the "Start Token Generator" node.
+
+![flow_start_token_gen](/docs/graphics/flow_start_token_gen.png)
+
+As soon as you have received a valid token you can use all other API calls.
+
+Therefore, the following snippet is mandatory and need to be used to read out the access token at the beginning of each API call:
+
+```javascript
+const tokenData = global.get('iedAccessToken') || {};
+if (tokenData.accessToken) {
+    msg.headers = msg.headers || {};
+    msg.headers['Cookie'] = 'authToken=' + tokenData.accessToken;
+} else {
+    node.warn('No access token available - run Token Manager first');
+}
+```
+
+>**PLEASE NOTE:**<br>
+>All API calls containing `/ext/` only work for external notifications.<br>
+>Notifications created within the Notifier app (notificationSource = "Notifier") can not be accessed!
+
 ## List all notifications
 
-In case of passing the defined limits of the KPI value, the custom app sends notifications to the Notifier. These notifications can also be listet in the Flow Creator by using the corresponding API request.
+In case of passing the defined limits of the KPI value, the custom app sends notifications to the Notifier. These notifications can also be listed in the Flow Creator by using the corresponding API request.
 
 ![flow_get_all](/docs/graphics/flow_get_all.png)
 
@@ -60,7 +99,7 @@ Therefore you need to configure a **GET** request with the following URL:
 
 **Testing the API request**
 
-To get all currently active notifications via these Flow Creator nodes, just trigger the inject node.
+To get all currently active notifications via these Flow Creator nodes, just trigger the inject node after you have created an access token.
 
 ![flow_get_all_result](/docs/graphics/flow_get_all_result.png)
 
@@ -112,7 +151,7 @@ Therefore you need to configure a **GET** request with the following URL:
 
 **Testing the API request**
 
-To get the defined notification via these Flow Creator nodes, just trigger the inject node.
+To get the defined notification via these Flow Creator nodes, just trigger the inject node after you have created an access token.
 
 ![flow_get_one_result](/docs/graphics/flow_get_one_result.png)
 
@@ -148,7 +187,7 @@ Therefore you need to configure a **PUT** request with the following URL:
 
 **Testing the API request**
 
-To accept a notification via these Flow Creator nodes, just trigger the inject node.
+To accept a notification via these Flow Creator nodes, just trigger the inject node after you have created an access token.
 
 ![flow_accept_result](/docs/graphics/flow_accept_result.png)
 
@@ -180,7 +219,7 @@ Therefore you need to configure a **PUT** request with the following URL:
 
 **Testing the API request**
 
-To clear the defined notification via these Flow Creator nodes, just trigger the inject node.
+To clear the defined notification via these Flow Creator nodes, just trigger the inject node after you have created an access token.
 
 ![flow_clear_result](/docs/graphics/flow_clear_result.png)
 
@@ -227,7 +266,9 @@ Therefore you need to configure a **POST** request with the following URL:
 
 **Testing the API request**
 
-To send the defined notification via these Flow Creator nodes, just trigger the inject node.
+To send the defined notification via these Flow Creator nodes, just trigger the inject node after you have created an access token.
 
 ![flow_raise_result](/docs/graphics/flow_raise_result.png)
 ![flow_raise_result_2](/docs/graphics/flow_raise_result_2.png)
+
+**[Back to overview](../README.md)**

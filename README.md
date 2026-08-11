@@ -28,7 +28,7 @@ Supported since Notifier V1.3:
 
 ![api-calls](docs/graphics/api_calls.png)
 
-Supported since Notifier V1.2 (deprecated):
+Deprecated:
 
 ![api-calls-old](docs/graphics/api_calls_old.png)
 
@@ -42,39 +42,45 @@ This how to shows two ways of using the Notifier OpenAPI.
 
 First it is described how to implement a JavaScript app in Docker including the Notifier OpenAPI. The app calculates and monitors a KPI value. Therefore the user can define two input tags that are coming from OPC UA Connector, as well as a min and max limit of the KPI value. In case these limits are passed, the app sends a notification to the Notifier app on the IED.
 
-![overview-js](docs/graphics/overviewjs.png)
+<img src="docs/graphics/overviewjs.png" width="800">
 
 Furthermore, by using the Flow Creator and Postman, it is possible to handle and test API calls to the Notifier app. With both tools we will list, accept, clear and raise notification in the Notifier app via its API. For that reason the JS app needs to be on the same Edge Device and running.
 
-![overview-fc](docs/graphics/overviewfc.png)
+<img src="docs/graphics/overviewfc.png" width="800">
 
 ## Requirements
 
 ### Used components
 
-- Industrial Edge Management (IEM) V1.5.2-4 / V1.11.8
-  - IE App Configuration Service V1.2.2
-  - Databus Configurator V2.0.0-5
-  - Databus V2.0.0-4
-  - Common Connector Configurator V1.8.1-4
-  - OPC UA Connector V1.8.1
-- Industrial Edge Device (IED) V1.10.0-9
-  - Notifier V1.3.0-11296596
-  - Flow Creator V 1.12.0-1
-- Industrial Edge App Publisher V1.10.5
-- Docker Engine V20.10.10
-- Docker Compose V2.4
-- TIA Portal V16
-- PlcSim Advanced for CPU 1518 ODK
+- Industrial Edge Management (IEM) V1.15.17
+- Industrial Edge Device (IED) ipc-ied-os 3.2.0.17
+- Management applications:
+  - Databus Configurator V3.2.3
+  - Common Configurator V1.1.0
+  - Edge OPC UA Server Configurator V2.3.6
+  - Cloud Connector Configurator V1.23.2
+  - Flow Creator Configurator V1.12.5
+- Device applications:
+  - Databus V3.4.0
+  - OPC UA Connector V2.4.3
+  - Common Configurator V2.5.0
+  - IIH Essentials V2.6.0
+  - Notifier V1.25.0
+  - Flow Creator V 1.19.2
+- Industrial Edge App Publisher V1.26.2
+- Docker Engine V29.7.1
+- Docker Compose V5.4.0
+- TIA Portal V21
+- CPU 1517V V2.2.0+03
 
 ### Further requirements
 
-- Access to an IEM with onboarded IED
-- Installed system configurators and apps (see list "Used components")
+- Access to an Industrial Edge Management System (IEM)
+- Onboarded Industial Edge Device (IED) on IEM
 - Installed apps (see list "Used components")
-- IED is connected to PLC
-- TIA portal project loaded on PLC
-- Google Chrome (Version ≥ 72) or Firefox (Version ≥ 62)
+- IED connected to PLC
+- TIA Portal project loaded on PLC
+- HTML5-capable Internet browser (e.g. Google Chrome)
 
 ### TIA Project
 
@@ -122,7 +128,7 @@ You can find further information about the following steps [here](docs/Postman.m
   - [Industrial Edge Forum](https://forum.mendix.com/link/space/industrial-edge)
   - [Industrial Edge landing page](https://new.siemens.com/global/en/products/automation/topic-areas/industrial-edge/simatic-edge.html)
   - [Industrial Edge GitHub page](https://github.com/industrial-edge)
-  - [Industrial Edge documentation page](https://docs.eu1.edge.siemens.cloud/index.html)
+  - [Industrial Edge documentation page](https://docs.industrial-operations-x.siemens.cloud/p/industrial-edge)
   
 ## Contribution
 

@@ -11,11 +11,11 @@ Postman is an API platform for using and testing APIs in a simple way. To test t
 
 You can copy a valid authentication token from your browser cookies, when logged into the Edge device. Using Chrome, go to settings > more tools > developer tools. Hit the tab 'Network', select an incoming reuest and copy it's 'Cookie' value.
 
-![postman_header](/docs/graphics/get_cookies.png)
+<img src="/docs/graphics/get_cookies.png" width="800">
 
 Paste the value into a text editor and search for the string 'authToken'. Copy the authToken value and paste it into Postman's header key *Cookie*.
 
-![postman_header](/docs/graphics/postman_header1.png)
+<img src="/docs/graphics/postman_header1.png" width="900">
 
 A **postman collection**, that contains all the following requests, can be downloaded [here](/src/postman_collection.json) and imported into Postman. Before starting any request, the collection variables must be set properly. A valid authentication token is then provided automatically by executing the IE Edge Device API request '/device/edge/api/v1/login/direct'. This token is set in each request header, when sending a request.
 
@@ -93,3 +93,5 @@ The GET request could look like this:
 `https://192.168.112.180/notifier/notificationservice/notifications/:id/ext/clear`
 
 ![postman_clear](/docs/graphics/postman_clear.png)
+
+**[Back to overview](../README.md)**
